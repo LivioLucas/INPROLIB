@@ -1,0 +1,163 @@
+body{
+    font-family: sans-serif;
+}
+
+/* Informações de menu */
+
+.menu {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #FFB800;
+    overflow-x: hidden;
+    padding-top: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(ala.png), url(ala-logo.png);
+    background-size: auto, 100px auto, 50px auto;
+    background-repeat: no-repeat;
+    background-position: 50% 92%, 50% 92%, 90% 2%;
+}
+
+.photo-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: auto;
+}
+
+h3{
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    color: black;
+  }
+
+i{
+    margin-right: 5px;
+}
+#sino{
+    font-size: 20px;
+    color: black;
+    margin-left: 20px;
+}
+#edit{
+    background-color: #ffce52;
+}
+
+.dropdown-btn, .bot{
+    padding: 10px 20px;
+    width: 100%;
+    background-color: inherit;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+    border: none;
+}
+.bot{
+    border-left: 4px solid black;
+}
+
+.dropdown-btn:hover, .bot:hover{
+    background-color: #ffc42f;
+}
+
+.menu .dropdown-container {
+    display: none;
+    padding-left: 20px;
+}
+
+.menu .dropdown-container a {
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+    color: black;
+    
+}
+
+.menu .dropdown-container a:hover {
+    background-color: #ffce52;
+}
+
+.cascata{
+    border: none;
+    border-left: 2px solid black;
+    margin-left: 8px;
+}
+
+/* Ícones */
+
+span{
+    position: relative;
+    top:4px;
+    margin-right: 2px;
+}
+
+#simb{
+    line-height: 0px;
+}
+
+/* Logo e Título */
+
+.content {
+    margin-left: 22%;
+    padding: 20px;
+}
+
+.logo{
+    width: 10%;
+    height: auto;
+    margin-left: 55%;
+}
+
+.logo, h1{
+    display: inline-block;
+    font-size: 2.50em;
+}
+.ala {
+    display: block;
+    width: 100px; 
+    height: auto; 
+    margin: auto;
+    margin-top: 170px;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.button {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+

@@ -1,0 +1,34 @@
+    conn_params= {
+    "user" : "root",
+    "password" : "livio",
+    "host" : "localhost",
+    "database" : "epe_schema"
+    }
+
+    # Estabelecendo conexão com o banco de dados
+    connection= mariadb.connect(**conn_params)
+
+    cursor= connection.cursor()
+    cursor.execute("SELECT nome, email, senha FROM usuario")
+    
+    for (nome, email , senha) in cursor:
+        print(f"Nome:{nome}, email: {email}, senha:{senha}")
+
+
+@app.route('/fornecedor/<int:fornecedor_id>')
+def fornecedor(fornecedor_id):
+    conn = mariadb.connect(**conn_params)
+    cursor = conn.cursor()
+    query = "SELECT empresa_forn FROM usuario"
+    cursor.execute = (query)
+    nome_fornecedores = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return (nome_fornecedores)
+
+    conn = mariadb.connect(**conn_params)
+    cursor = conn.cursor()
+    pegar_fornecedores = "SELECT empresa_forn FROM fornecedor"
+    cursor.execute(pegar_fornecedores)
+    fornecedores = cursor.fetchall()
+    print(fornecedores)

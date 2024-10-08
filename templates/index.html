@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de login</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <h1 class="titulo">Bem-vindo ao Repositório Institucional</h1>
+    <div class="linhas">
+        <div class="linhas_colorida_1"></div>
+        <div class="linhas_colorida_2"></div>
+    
+
+
+    </div>
+    <img class="logo" src="../static/img/logo.png" alt="logo">
+    <form class="login" action="/login" method="POST">  
+        <div class="box-user">
+            <input type="text" name="login" required>
+            <label class="login1">Login</label>
+        </div>
+        <div class="box-user">
+            <input type="password" name="password" required>
+            <label class="senha1">Senha</label>
+        </div>
+        <div>
+            <a href="#" class="forget">Esqueci minha senha</a>
+        </div>
+        <div>
+            <a href="#" type="submit" class="cadast">Cadastrar</a>
+        </div>
+        
+        <a href="#" type="submit" class="btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <input type="submit" value="ACESSAR">
+        </a>
+        <div>
+            <label for="lang" class="tip-acesso">Tipo de acesso</label>
+            <select name="languages" id="lang">
+              <option value="aluno">Aluno</option>
+              <option value="administrador">Administrador</option>
+              <option value="coordenacao">Coordenação</option>
+              <option value="professor">Professor</option>
+              <option value="publicante">Publicante</option>
+            </select>
+        </div>
+      
+    </form>
+    
+</body>
+</html>

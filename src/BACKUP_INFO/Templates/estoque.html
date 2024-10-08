@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/estoque.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>EPE Cadastro de Produção</title>
+</head>
+<body>
+    <body>
+
+        <div class="menu">
+            <i class="fa-solid fa-bell" id="sino"></i>
+            <div class="photo-placeholder"></div>
+            <h3>User</h3>
+            <a href="/home"><button class="bot" style="font-size: 16px;"><i class="fas fa-home"></i>Home</button></a>
+            <button class="dropdown-btn bot2" style="font-size: 16px;"><i class="fa-solid fa-pen-to-square"></i>Cadastros</button>
+            <div class="dropdown-container">
+                <a class="cascata" href="/cad_pessoas_pagina"><span class="material-symbols-outlined" id="simb">
+                    person</span>Cadastro de Pessoas</a>
+                <a class="cascata" href="/cad_producao_pagina"><span class="material-symbols-outlined" id="simb">
+                    inventory_2</span>Cadastro de Produção</a>
+            </div>
+            <button class="dropdown-btn" style="font-size: 16px;"><i class="fa-solid fa-cubes"></i>Produção</button>
+            <div class="dropdown-container">
+                <a class="cascata" href="/lan_emissao"><span class="material-symbols-outlined" id="simb">
+                    <span class="material-symbols-outlined">
+                        mark_email_read</span></span>Emissão de OP</a>
+                <a class="cascata" href="/lan_produto"><span class="material-symbols-outlined" id="simb">
+                    rocket_launch</span>Lançamento</a>
+                <a class="cascata" href="/estoque"><span class="material-symbols-outlined" id="simb">
+                            package_2</span>Estoque</a>
+                <a class="cascata" href="/baixa_estoque"><span class="material-symbols-outlined" id="simb">
+                        disabled_by_default</span>Baixas de Estoque</a>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Estoque</h1>
+        </div>
+        <section class="pai">
+            <div class="ret1" onclick="mostrarCadastro('Est_Entradas')"><h2 class="tit">Entradas</h2></div>
+            <div class="ret0" onclick="mostrarCadastro('Est_Produtos')"><h2 class="tit">Produtos</h2></div>
+            <div class="ret00" onclick="mostrarCadastro('Est_Subprodutos')"><h2 class="tit">Subprodutos</h2></div>
+            <div class="ret2">
+                <form action="" method="post">
+                    <!-- Cadastro de Entradas -->
+                    <div id="cadastroEst_Entradas" class="cadastro">
+                        <input class="busca" type="text" placeholder="Busca">
+                        <table>
+                                <!-- Cabeçalho -->
+                                <tr>
+                                  <th class="" scope="col">Cod.</th>
+                                  <th class="" scope="col">Item</th>
+                                  <th class="" scope="col">Fornecedor</th>
+                                  <th class="" scope="col">Lote</th>
+                                  <th class="" scope="col">Tipo</th>
+                                  <th class="" scope="col">Data Fab</th>
+                                  <th class="" scope="col">Qtd</th>
+                                  <th class="" scope="col">Und.Medida</th>
+                                </tr>
+                              
+                                <!-- Primeira Linha -->
+                                <tr>
+                                  {% for linha in estoque_entrada %}
+                                  <tr>
+                                      {% for coluna in linha %}
+                                      <td>{{ coluna }}</td>
+                                      {% endfor %}
+                                  </tr>
+                                  {% endfor %}
+                                </tr>
+                              
+                        </table>
+                    </div>
+                    <div id="cadastroEst_Produtos" class="cadastro">
+                      <input class="busca" type="text" placeholder="Busca">
+                        <table>
+                            <!-- Cabeçalho -->
+                            <tr>
+                              <th class="" scope="col">OP</th>
+                              <th class="" scope="col">Produto</th>
+                              <th class="" scope="col">Responsável</th>
+                              <th class="" scope="col">Data Lanç</th>
+                              <th class="" scope="col">Data Entr</th>
+                              <th class="" scope="col">Cliente</th>
+                              <th class="" scope="col"></th>
+                            </tr>
+                          <tb>
+                            <!-- Primeira Linha -->
+                            <tr>
+                              <td class="cod" type="number" id="numeroOP">002</td>
+                              <td class="" type="text" id="nomeProdutos">Sorvete de Creme</td>
+                              <td class="" type="text" id="tipoOP">Responsável</td>
+                              <td class="" type="date" id="dataLanç">09/04/2024</td>
+                              <td class="" type="date" id="dataOP">09/08/2024</td>
+                              <td class="" type="number" id="estoqueEntradas">Cliente 02</td>
+                              <td><button class="desc" id="desc"><span class="material-symbols-outlined">
+                                visibility
+                                </span></td>
+                            </tr>
+                            </tb>
+                        </table>
+                    </div>
+                    <div id="cadastroEst_Subprodutos" class="cadastro">
+                      <input class="busca" type="text" placeholder="Busca">
+                      <table>
+                        <!-- Cabeçalho -->
+                        <tr>
+                          <th class="" scope="col">OP</th>
+                          <th class="" scope="col">Produto</th>
+                          <th class="" scope="col">Responsável</th>
+                          <th class="" scope="col">Data Lanç</th>
+                          <th class="" scope="col">Data Entr</th>
+                          <th class="" scope="col"></th>
+                        </tr>
+                      <tb>
+                        <!-- Primeira Linha -->
+                        <tr>
+                          <td class="cod" type="number" id="numeroOP">002</td>
+                          <td class="" type="text" id="nomeProdutos">Pistache</td>
+                          <td class="" type="text" id="tipoOP">Responsável</td>
+                          <td class="" type="date" id="dataLanç">09/04/2024</td>
+                          <td class="" type="date" id="dataOP">09/08/2024</td>
+                          <td><button class="desc" id="desc"><span class="material-symbols-outlined">
+                            visibility
+                            </span></td>
+                        </tr>
+                        </tb>
+                    </table>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <script src="../static/js/menu.js"></script>
+        <script src="../static/js/menu2.js"></script>
+    </body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/cad_pessoas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>EPE Cadastro de Pessoas</title>
+</head>
+<body>
+    <body>
+        <div class="menu">
+            <i class="fa-solid fa-bell" id="sino"></i>
+            <div class="photo-placeholder"></div>
+            <h3>User</h3>
+            <a href="/home"><button class="bot" style="font-size: 16px;"><i class="fas fa-home"></i>Home</button></a>
+            <button class="dropdown-btn bot2" style="font-size: 16px;"><i class="fa-solid fa-pen-to-square"></i>Cadastros</button>
+            <div class="dropdown-container">
+                <a class="cascata" href="/cad_pessoas_pagina"><span class="material-symbols-outlined" id="simb">
+                    person</span>Cadastro de Pessoas</a>
+                <a class="cascata" href="/cad_producao_pagina"><span class="material-symbols-outlined" id="simb">
+                    inventory_2</span>Cadastro de Produção</a>
+            </div>
+            <button class="dropdown-btn" style="font-size: 16px;"><i class="fa-solid fa-cubes"></i>Produção</button>
+            <div class="dropdown-container">
+                <a class="cascata" href="/lan_emissao"><span class="material-symbols-outlined" id="simb">
+                    <span class="material-symbols-outlined">
+                        mark_email_read</span></span>Emissão de OP</a>
+                <a class="cascata" href="/lan_produto"><span class="material-symbols-outlined" id="simb">
+                    rocket_launch</span>Lançamento</a>
+                <a class="cascata" href="/estoque"><span class="material-symbols-outlined" id="simb">
+                            package_2</span>Estoque</a>
+                <a class="cascata" href="/baixa_estoque"><span class="material-symbols-outlined" id="simb">
+                        disabled_by_default</span>Baixas de Estoque</a>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Cadastro de Pessoas</h1>
+        </div>
+        <section class="pai">
+            <div class="ret1" onclick="mostrarCadastro('usuarios')"><h2 class="tit">Usuários</h2></div>
+            <div class="ret0" onclick="mostrarCadastro('fornecedores')"><h2 class="tit">Fornecedores</h2></div>
+            <div class="ret00" onclick="mostrarCadastro('clientes')"><h2 class="tit">Clientes</h2></div>
+            <div class="ret2">
+                    <!-- Cadastro de Usuários -->
+                    <div id="cadastroUsuarios" class="cadastro">
+                <form action="/cad_user" id="formularioPessoas" method="POST">
+                    <div class="item1">
+                        <div class="esp4"></div>
+                        <label for="name">Nome:</label>
+                        <input type="text" name="nome">
+                        <div class="esp1"></div>
+                        <label for="email" >Email:</label>
+                        <div class="esp5"></div>
+                        <input class="em" name="email" type="text">
+                        <div class="esp4"></div>
+                    </div>
+                    <div class="item2">
+                        <label for="cpf">CPF:</label>
+                        <div class="esp7"></div>
+                        <input name="cpf" type="text">
+                        <div class="esp1"></div>
+                        <label for="function">Função:</label>
+                        <div class="esp5"></div>
+                        <select name="funcao">
+                        <option value="funcao">Função</option>
+                        <option value="master">Master</option>
+                        <option value="adm">Administrador</option>
+                        <option value="operador">Operador</option>
+                        </select>
+                        <div class="esp4"></div>
+                    </div>
+                    <div class="item3">
+                        <label for="senha">Senha:</label>
+                        <input id="senha" name="senha" type="password">
+                        <div class="esp3"></div>
+                        <label for="senha">Confirmar Senha:</label>
+                        <input id="senha" name="confirma_senha" type="password">
+                    </div>
+                    <button class="cad" type="submit"><strong>Cadastrar</strong></button>
+                </form>
+                </div>                
+                    <!-- Cadastro de Fornecedores -->    
+                    <div id="cadastroFornecedores" style="display: none;" class="cadastro">
+                <form action="/cad_fornecedor" id="formularioPessoas" method="POST">        
+                        <div class="item1">
+                            <div class="esp8"></div>
+                            <label for="nomeFornecedor">Empresa:</label>
+                            <input type="text" id="nomeFornecedor" name="nome_fornecedor">
+                            <div class="esp1"></div>
+                            <label for="cnpjFornecedor">CNPJ:</label>
+                            <div class="esp1"></div><div class="esp7"></div>
+                            <input type="text" id="cnpjFornecedor" name="cnpj_fornecedor">
+                            <div class="esp8"></div>
+                        </div>
+                        <div class="item2"></div>
+                            <label for="cepFornecedor">CEP:</label>
+                            <div class="esp6"></div>
+                            <input type="text" id="cepFornecedor" name="cep_fornecedor">
+                            <div class="esp1"></div>
+                            <label for="enderecoFornecedor">Endereço:</label>
+                            <input type="text" id="enderecoFornecedor" name="endereco_fornecedor">
+                            <div class="esp8"></div>
+                        <div class="item3">
+                            <label for="bairroFornecedor">Bairro:</label>
+                            <div class="esp1"></div>
+                            <input type="text" id="bairroFornecedor" name="bairro_fornecedor">
+                            <div class="esp1"></div>
+                            <label for="uf">UF:</label>
+                            <div class="esp6"></div> <div class="esp1"></div> <div class="esp3"></div>
+                            <select name="uf_fornecedor" class="uf" id="ufFornecedor">
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>                          
+                            </select>
+                            <div class="esp8"></div>
+                        </div>
+                        <div class="item4">
+                            <label for="gestorFornecedor">Gestor:</label>
+                            <div class="esp3"></div>
+                            <input type="text" id="gestorFornecedor" name="gestor_fornecedor">
+                            <div class="esp1"></div>
+                            <label for="emailFornecedor">Email:</label>
+                            <div class="esp1"></div> <div class="esp2"></div>
+                            <input type="email" id="emailFornecedor" name="email_fornecedor">
+                            <div class="esp8"></div>
+                        </div>
+                        <div class="item5">
+                            <label for="cidadeFornecedor">Cidade:</label>
+                            <div class="esp2"></div>
+                            <input type="text" id="cidadeFornecedor" name="cidade_fornecedor">
+                            <div class="esp1"></div>
+                            <label for="telefoneFornecedor">Telefone:</label>
+                            <div class="esp2"></div>
+                            <input type="number" id="telefoneFornecedor" name="telefone_fornecedor">
+                            <div class="esp8"></div>
+                        </div>
+                        <button class="cad cad2" type="submit"><strong>Cadastrar</strong></button>
+                </form>     
+                    </div>                      
+                    <!-- Cadastro de Clientes -->                    
+                      <div id="cadastroClientes" style="display: none;" class="cadastro">
+                <form action="/cad_clientes" id="formularioPessoas" method="POST">        
+                        <div class="item1">
+                            <div class="esp8"></div>
+                            <label for="nomeClientes">Empresa:</label>
+                            <input type="text" id="nomeClientes" name="nomeClientes">
+                            <div class="esp1"></div>
+                            <label for="cnpjClientes">CNPJ:</label>
+                            <div class="esp1"></div><div class="esp7"></div>
+                            <input type="number" id="cnpjClientes" name="cnpjClientes">
+                            <div class="esp8"></div>
+                        </div>
+                        <div class="item2"></div>
+                            <label for="cepClientes">CEP:</label>
+                            <div class="esp6"></div>
+                            <input type="number" id="cepClientes" name="cepClientes">
+                            <div class="esp1"></div>
+                            <label for="enderecoClientes">Endereço:</label>
+                            <input type="text" id="enderecoClientes" name="enderecoClientes">
+                            <div class="esp8"></div>
+                        <div class="item3">
+                            <label for="bairroClientes">Bairro:</label>
+                            <div class="esp1"></div>
+                            <input type="text" id="bairroClientes" name="bairroClientes">
+                            <div class="esp1"></div>
+                            <label for="uf">UF:</label>
+                            <div class="esp6"></div> <div class="esp1"></div> <div class="esp3"></div>
+                            <select name="uf" class="uf" id="ufClientes">
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>
+                            </select>
+                            <div class="esp8"></div>
+                        </div>
+                        <div class="item4">
+                            <label for="gestorClientes">Gestor:</label>
+                            <div class="esp3"></div>
+                            <input type="text" id="gestorClientes" name="gestorClientes">
+                            <div class="esp1"></div>
+                            <label for="emailClientes">Email:</label>
+                            <div class="esp1"></div> <div class="esp2"></div>
+                            <input type="email" id="emailClientes" name="emailClientes">
+                            <div class="esp8"></div>
+                        </div>
+                        <div class="item5">
+                            <label for="cidadeClientes">Cidade:</label>
+                            <div class="esp2"></div>
+                            <input type="text" id="cidadeClientes" name="cidadeClientes">
+                            <div class="esp1"></div>
+                            <label for="telefoneClientes">Telefone:</label>
+                            <div class="esp2"></div>
+                            <input type="number" id="telefoneClientes" name="telefoneClientes">
+                            <div class="esp8"></div>
+                        </div>
+                        <button class="cad cad2" type="submit"><strong>Cadastrar</strong></button>
+                </form>       
+                    </div>
+                
+            </div>
+        </section>
+        <script src="../static/js/menu.js"></script>
+</body>
+</html>

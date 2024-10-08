@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/imask"></script>
+        <title>EPE Login</title>
+</head>
+<body>
+    <div class="conteiner">
+        <section class="log">
+            <img class="logo1" src="../static/images/ala-logo.png">
+            <div class="login">
+                <strong><h1>LOGIN</h1></strong>
+            </div>
+        <form action="/login" id="formulario_login" method="POST">
+            <input id="cpf" type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="ㅤ👤 CPF" maxlength="15" required>
+                <script>
+                    // Máscara de CPF
+                    var cpfInput = document.getElementById('cpf');
+                    var cpfMask = IMask(cpfInput, {
+                        mask: '000.000.000-00'
+                    });
+                </script>
+            <input type="password" id="senha" name="senha" placeholder="ㅤ🔒 Senha" required>
+            <a href="home.html"><button><strong>Entrar</strong></button></a> 
+        </form>
+            <p class="fgr-pass"><a href="#">Esqueci minha senha</a></p>
+        </section>
+        <section class="imagem">
+            <img class="titulo" src="../static/images/ala.png">
+            <img class="ima2" src="../static/images/ala2.png" alt="">
+        </section>
+     </div>
+</body>
+</html>

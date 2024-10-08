@@ -1,0 +1,75 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPE Home</title>
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+<div class="menu">
+    <i class="fa-solid fa-bell" id="sino"></i>
+    <div class="photo-placeholder"></div>
+    <h3>User</h3>
+    <a href="/home"><button class="bot" style="font-size: 16px;"><i class="fas fa-home"></i>Home</button></a>
+    <button class="dropdown-btn bot2" style="font-size: 16px;"><i class="fa-solid fa-pen-to-square"></i>Cadastros</button>
+    <div class="dropdown-container">
+        <a class="cascata"  href="/cad_pessoas_pagina"><span class="material-symbols-outlined" id="simb">
+            person</span>Cadastro de Pessoas</a>
+        <a class="cascata" href="/cad_producao_pagina"><span class="material-symbols-outlined" id="simb">
+            inventory_2</span>Cadastro de Produção</a>
+    </div>
+    <button class="dropdown-btn" style="font-size: 16px;"><i class="fa-solid fa-cubes"></i>Produção</button>
+    <div class="dropdown-container">
+      <a class="cascata" href="/lan_emissao"><span class="material-symbols-outlined" id="simb">
+          <span class="material-symbols-outlined">
+              mark_email_read</span></span>Emissão de OP</a>
+      <a class="cascata" href="/lan_produto"><span class="material-symbols-outlined" id="simb">
+          rocket_launch</span>Lançamento</a>
+      <a class="cascata" href="/estoque"><span class="material-symbols-outlined" id="simb">
+                  package_2</span>Estoque</a>
+      <a class="cascata" href="/baixa_estoque"><span class="material-symbols-outlined" id="simb">
+              disabled_by_default</span>Baixas de Estoque</a>
+  </div>
+</div>
+<div class="content">
+    <h1>Home</h1>
+    <table>
+        
+        <tr>
+          <th>Produto</th>
+          <th>OS</th>
+          <th>Responsável</th>
+          <th>Cliente</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+        <tr>
+          <td>Sorvete de Chocolate</td>
+          <td>OS001</td>
+          <td>João</td>
+          <td>Cliente A</td>
+          <td>Em Produção</td>
+          <td>
+            <button class="button" id="edit"><i class="fa-solid fa-pencil"></i></button>
+            <button class="button"><i class="fa-solid fa-check"></i></button>
+          </td>
+        </tr>
+        <tr>
+          <td>Sorvete de Morango</td>
+          <td>OS002</td>
+          <td>Maria</td>
+          <td>Cliente B</td>
+          <td>Em Produção</td>
+          <td>
+              <button class="button" id="edit"><i class="fa-solid fa-pencil"></i></button>
+              <button class="button"><i class="fa-solid fa-check"></i></i></button>
+          </td>
+        </tr>
+      
+      </table>
+</div>
+<script src="../static/js/menu.js"></script>
+</body>
+</html>

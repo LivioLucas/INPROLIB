@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/lan_produto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>EPE Lançamento de Produção</title>
+</head>
+<body>
+    <body>
+        <div class="menu">
+            <i class="fa-solid fa-bell" id="sino"></i>
+            <div class="photo-placeholder"></div>
+            <h3>User</h3>
+            <a href="/home"><button class="bot" style="font-size: 16px;"><i class="fas fa-home"></i>Home</button></a>
+            <button class="dropdown-btn bot2" style="font-size: 16px;"><i class="fa-solid fa-pen-to-square"></i>Cadastros</button>
+            <div class="dropdown-container">
+                <a class="cascata" href="/cad_pessoas_pagina"><span class="material-symbols-outlined" id="simb">
+                    person</span>Cadastro de Pessoas</a>
+                <a class="cascata" href="/cad_producao_pagina"><span class="material-symbols-outlined" id="simb">
+                    inventory_2</span>Cadastro de Produção</a>
+            </div>
+            <button class="dropdown-btn bot3" style="font-size: 16px;"><i class="fa-solid fa-cubes"></i>Produção</button>
+            <div class="dropdown-container">
+                <a class="cascata" href="/lan_emissao"><span class="material-symbols-outlined" id="simb">
+                    <span class="material-symbols-outlined">
+                        mark_email_read</span></span>Emissão de OP</a>
+                <a class="cascata" href="/lan_produto"><span class="material-symbols-outlined" id="simb">
+                    rocket_launch</span>Lançamento</a>
+                <a class="cascata" href="/estoque"><span class="material-symbols-outlined" id="simb">
+                            package_2</span>Estoque</a>
+                <a class="cascata" href="/baixa_estoque"><span class="material-symbols-outlined" id="simb">
+                        disabled_by_default</span>Baixas de Estoque</a>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Lançamentos</h1>
+        </div>
+        <section class="pai">
+            <div class="ret1" onclick="mostrarCadastro('Um')"><h2 class="tit">Ordem de Produção</h2></div>
+            <div class="ret0" onclick="mostrarCadastro('Dois')"><h2 class="tit">Entradas</h2></div>
+            <div class="ret2">
+                <form action="/lancamentos" method="POST">
+                    <!-- Lançamento de Ordem de Produção -->
+                    <div id="cadastroUm" class="cadastro">
+                        <div class="item1">
+                            <label for="numeroOP">N° OP:</label>
+                            <div class="esp6"></div><div class="esp2_5"></div>
+                            <input type="number" id="numeroOP">
+                            <div class="esp0"></div><div class="esp5"></div><div class="esp3"></div>
+                            <label for="un">Unidade Medida:</label>
+                            <input type="text" name="un" class="unm0" id="un1OP" disabled>
+                        </div>
+                        <div class="item2">
+                            <label for="tipo">Tipo:</label>
+                            <div class="esp3"></div><div class="esp3"></div><div class="esp3"></div><div class="esp3"></div><div class="esp2"></div>
+                            <input type="text" id="tipoOP">
+                            <div class="esp2"></div>
+                            <label for="item">Item:</label>
+                            <input type="text" id="itemOP" disabled>
+                            <div class="esp2_5"></div>
+                            <label for="cliente">Cliente:</label>
+                            <input type="text" id="clienteOP" disabled>
+                            <input type="checkbox" name="somente_Estoque" id="estoqueOP">
+                            <label for="estoque">Somente para estoque</label>
+                        </div>
+                        <div class="item3">
+                            <label for="quantidade">Quantidade:</label>
+                            <input type="number" id="quantidade1OP">
+                            <label for="un_entrada">UN:</label>
+                            <input type="text" class="unm" id="un2OP" disabled>
+                            <div class="esp5"></div><div class="esp6"></div><div class="esp6"></div>
+                            <label for="dataOP">Data de Entrega:</label>
+                            <input type="date" id="dataOP" disabled>
+                        </div>
+                        <div class="item4">
+                            <table>
+
+                                    <!-- Cabeçalho -->
+                                    <tr>
+                                      <th class="comp" scope="col">Componentes:</th>
+                                      <th class="maior" scope="col">Estimados para Produção</th>
+                                      <th class="menor" scope="col">QTD:</th>
+                                      <th class="menor" scope="col">UN:</th>
+                                      <th class="maior2" scope="col">Gastos na Produção</th>
+                                      <th class="menor" scope="col">QTD:</th>
+                                      <th class="menor" scope="col">UN:</th>
+                                    </tr>
+
+                                  <tb>
+                                    <!-- Primeira Linha -->
+                                    <tr>
+                                      <th scope="row"></th>
+                                      <td><input class="estimado" type="text" id="estimado1" disabled></td>
+                                      <td><input class="qtd" type="number" id="epqtd1OP"></td>
+                                      <td><input class="un" type="text" id="epun1OP" disabled></td>
+                                      <td><input class="gasto" type="text" id="gasto1OP"></td>
+                                      <td><input class="qtd" type="number" id="gpqtd1OP"></td>
+                                      <td><input class="un" type="text" id="gpun1OP" disabled></td>
+                                    </tr>
+                                    <!-- Segunda Linha -->
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td><input class="estimado" type="text" id="estimado2" disabled></td>
+                                        <td><input class="qtd" type="number" id="epqtd2OP"></td>
+                                        <td><input class="un" type="text" id="epun2OP" disabled></td>
+                                        <td><input class="gasto" type="text" id="gasto2OP"></td>
+                                        <td><input class="qtd" type="number" id="gpqtd2OP"></td>
+                                        <td><input class="un" type="text" id="gpun2OP" disabled></td>
+                                      </tr>
+                                      <!-- Terceira Linha -->
+                                      <tr>
+                                        <th scope="row"></th>
+                                        <td><input class="estimado" type="text" id="estimado3" disabled></td>
+                                        <td><input class="qtd" type="number" id="epqtd3OP"></td>
+                                        <td><input class="un" type="text" id="epun3OP" disabled></td>
+                                        <td><input class="gasto" type="text" id="gasto3OP"></td>
+                                        <td><input class="qtd" type="number" id="gpqtd3OP"></td>
+                                        <td><input class="un" type="text" id="gpun3OP" disabled></td>
+                                      </tr>
+                                      <!-- Quarta Linha -->
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td><input class="estimado" type="text" id="estimado4" disabled></td>
+                                        <td><input class="qtd" type="number" id="epqtd4OP"></td>
+                                        <td><input class="un" type="text" id="epun4OP" disabled></td>
+                                        <td><input class="gasto" type="text" id="gasto4OP"></td>
+                                        <td><input class="qtd" type="number" id="gpqtd4OP"></td>
+                                        <td><input class="un" type="text" id="gpun4OP" disabled></td>
+                                      </tr>
+                                      <!-- Quinta Linha -->
+                                      <tr>
+                                          <th scope="row"></th>
+                                          <td><input class="estimado" type="text" id="estimado5" disabled></td>
+                                          <td><input class="qtd" type="number" id="epqtd5OP"></td>
+                                          <td><input class="un" type="text" id="epun5OP" disabled></td>
+                                          <td><input class="gasto" type="text" id="gasto5OP"></td>
+                                          <td><input class="qtd" type="number" id="gpqtd5OP"></td>
+                                          <td><input class="un" type="text" id="gpun5OP" disabled></td>
+                                        </tr>
+                                        <!-- Sexta Linha -->
+                                        <tr>
+                                          <th scope="row"></th>
+                                          <td><input class="estimado" type="text" id="estimado6" disabled></td>
+                                          <td><input class="qtd" type="number" id="epqtd6OP"></td>
+                                          <td><input class="un" type="text" id="epun6OP" disabled></td>
+                                          <td><input class="gasto" type="text" id="gasto6OP"></td>
+                                          <td><input class="qtd" type="number" id="gpqtd6OP"></td>
+                                          <td><input class="un" type="text" id="gpun6OP" disabled></td>
+                                        </tr>
+                                </tb>
+                            </table>
+                        </div>
+                        <button class="cad cad2 cad3" type="submit"><strong>Lançar</strong></button>
+                        </div>
+                    <!-- Lançamento de Entradas -->
+                    <div id="cadastroDois" style="display: none;" class="cadastro">
+                        <div class="item1">
+                            <div class="esp1"></div>
+                            <label for="codEntrada">Código:</label>
+                            <input type="text" id="codEntrada" name="cod_entrada">
+                            <div class="esp5"></div>
+                            <label for="entrada">Entrada:</label>
+                            <select name="lan_entrada" class="en" id="lanEntrada">
+                                {% for entrada in entradas %}
+                                <option value="{{ entrada[0] }}" selected>{{ entrada[0] }}</option>                                
+                                {% endfor %}
+                            </select>
+                            <div class="esp9"></div>
+                            <label for="fornecedor">Fornecedor:</label>
+                            <select name="lan_fornecedor" class="en" id="lanFornecedor">
+                                {% for fornecedor in fornecedores %}
+                                <option value="{{ fornecedor[0] }}">{{ fornecedor[0] }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="esp5"></div> <div class="esp3"></div>
+                            <label for="loteEntrada">Lote:</label>
+                            <input type="text" id="loteEntrada" name="lote_entrada">
+                        </div>
+                        <div class="item2">
+                            <label for="dataFab1">Tipo:</label>
+                            <div class="esp2_5"></div>
+                            <select name="lan_tipo_entrada" class="en" id="lanTipoEntrada">
+                                <option value="MP">MATÉRIA PRIMA - MP</option>
+                                <option value="INS">INSUMO - INS</option>
+                            </select>
+                            <div class="esp0"></div><div class="esp6"></div><div class="esp2_5"></div>
+                            <label for="dataFab2">Data de Fabricação:</label>
+                            <input type="date" id="dataFab2" name="data_fab">
+                        </div>
+                        <div class="item3">
+                            <div class="esp9"></div><div class="esp6"></div>
+                            <label for="quantidade">Quantidade:</label>
+                            <input type="number" id="quantidadeEn" name="quantidade">
+                            <label for="un_entrada">UN MED:</label>
+                            <input type="text" class="unm" id="unEn" name="und_medida">
+                        </div>
+                        <button class="cad cad2" type="submit"><strong>Lançar</strong></button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <script src="../static/js/menu.js"></script>
+    </body>
+</html>

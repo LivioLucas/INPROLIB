@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/cad_produção.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>EPE Cadastro de Produção</title>
+</head>
+<body>
+    <body>
+
+        <div class="menu">
+            <i class="fa-solid fa-bell" id="sino"></i>
+            <div class="photo-placeholder"></div>
+            <h3>User</h3>
+            <a href="/home"><button class="bot" style="font-size: 16px;"><i class="fas fa-home"></i>Home</button></a>
+            <button class="dropdown-btn bot2" style="font-size: 16px;"><i class="fa-solid fa-pen-to-square"></i>Cadastros</button>
+            <div class="dropdown-container">
+                <a class="cascata" href="/cad_pessoas_pagina"><span class="material-symbols-outlined" id="simb">
+                    person</span>Cadastro de Pessoas</a>
+                <a class="cascata" href="/cad_producao_pagina"><span class="material-symbols-outlined" id="simb">
+                    inventory_2</span>Cadastro de Produção</a>
+            </div>
+            <button class="dropdown-btn" style="font-size: 16px;"><i class="fa-solid fa-cubes"></i>Produção</button>
+            <div class="dropdown-container">
+                <a class="cascata" href="/lan_emissao"><span class="material-symbols-outlined" id="simb">
+                    <span class="material-symbols-outlined">
+                        mark_email_read</span></span>Emissão de OP</a>
+                <a class="cascata" href="/lan_produto"><span class="material-symbols-outlined" id="simb">
+                    rocket_launch</span>Lançamento</a>
+                <a class="cascata" href="/estoque"><span class="material-symbols-outlined" id="simb">
+                            package_2</span>Estoque</a>
+                <a class="cascata" href="/baixa_estoque"><span class="material-symbols-outlined" id="simb">
+                        disabled_by_default</span>Baixas de Estoque</a>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Cadastro de Produção</h1>
+        </div>
+        <section class="pai">
+            <div class="ret1" onclick="mostrarCadastro('entradas')"><h2 class="tit">Entradas</h2></div>
+            <div class="ret0" onclick="mostrarCadastro('produtos')"><h2 class="tit">Produtos</h2></div>
+            <div class="ret00" onclick="mostrarCadastro('subprodutos')"><h2 class="tit">Subprodutos</h2></div>
+            <div class="ret2">
+                <form action="/cad_entradas" method="POST">
+                    <!-- Cadastro de Entradas -->
+                    <div id="cadastroEntradas" class="cadastro">
+                        <div class="item1">
+                            <div class="esp4"></div>
+                            <label for="codigo">Código:</label>
+                            <div class="esp6"></div><div class="esp2"></div>
+                            <input type="number" name="cod_entrada" id="codigoEntradas" >
+                            <div class="esp9"></div>
+                            <label for="un">Unidade Medida:</label>
+                            <select name="unid_medida_entrada" class="un" id="unEntradas">
+                                <option value="KG">KG (Quilograma)</option>
+                                <option value="LT">LT (Litros)</option>
+                                <option value="UND">UND (Unidade)</option>
+                            </select>
+                        </div>
+                        <div class="item2">
+                            <label for="nome">Nome:</label>
+                            <div class="esp3"></div><div class="esp3"></div><div class="esp3"></div><div class="esp3"></div><div class="esp2"></div>
+                            <input type="text" name="nome_entrada" id="nomeEntradas">
+                            <div class="esp2"></div><div class="esp3"></div>
+                            <label for="validade">Validade (Dias):</label>
+                            <div class="esp2_5"></div>
+                            <input type="number" name="validade_entrada" id="validadeEntradas">
+                        </div>
+                        <div class="item3">
+                            <label for="tipo">Tipo:</label>
+                            <div class="esp6"></div><div class="esp6"></div>
+                            <select name="tipo_entrada" class="tipo" id="tipoEntradas">
+                                <option value="MP">MP - Matéria-Prima</option>
+                                <option value="INS">INS - Insumo</option>
+                            </select>
+                            <div class="esp0"></div>
+                            <label for="estoque">Estoque Mínimo:</label>
+                            <input type="number" name="est_min_entrada" id="estoqueEntradas">
+                            <input type="text" id="unestoqueEntradas" >
+                        </div>
+                        <div class="item4">
+                            <label for="fornecedor">Fornecedor:</label>
+                            <select name="fornecedor" class="fornecedor" id="fornecedorEntradas">
+                                {% for fornecedor in fornecedores %}
+                                <option value="{{ fornecedor[0] }}">{{ fornecedor[0] }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="esp0"></div><div class="esp2"></div><div class="esp2"></div>
+                            <label for="data">Data de Cadastro:</label>
+                            <input type="date" name="data_cad_entrada" id="dataEntradas" value="25/12/2024" >
+                        </div>
+                        <button class="cad cad2 cad3" type="submit"><strong>Cadastrar</strong></button>
+                        </div>
+                 
+                    <!-- Cadastro de Produtos -->
+                    <div id="cadastroProdutos" style="display: none;" class="cadastro">
+                        <div class="item1">
+                            <div class="esp1"></div>
+                            <label for="codigo">Código:</label>
+                            
+                            <input type="number" id="codigoProdutos" disabled>
+                            <div class="esp9"></div><div class="esp5"></div>
+                            <label for="un">Unidade Medida:</label>
+                            
+                            <select name="un" class="un" id="un1Produtos">
+                                <option value="KG">KG (Quilograma)</option>
+                            </select>
+                        </div>
+                        <div class="item2">
+                            <label for="nome">Nome:</label>
+                            <div class="esp2_5"></div>
+                            <input type="text" id="nomeProdutos">
+                        </div>
+                        <div class="item3">
+                            <label for="componentes">Componentes:</label>
+                            <div class="esp3"></div>
+                            <input type="number" id="componentesProdutos">
+                            <div class="esp2"></div>
+                            <label for="pm">Produção Mínima:</label>
+                            <input type="number" id="pmProdutos">
+                            <input type="text" id="un2Produtos">
+                            <label for="validade">Validade (Dias):</label>
+                            <div class="esp2_5"></div>
+                            <input type="number" id="validadeProdutos">
+                        </div>
+                        <div class="item4">
+                            <label for="quantidade">Quantidades:</label>
+                            <div class="esp8"></div>
+                        </div>
+                        <div class="item5">
+                            <label for="componentes1">Componentes 1:</label>
+                            <input type="text" id="componentes1Produtos">
+                            <input type="number" id="quantidade1Produtos">
+                            <input type="text" id="un3Produtos" disabled>
+                            <label for="estoque">Estoque Mínimo:</label>
+                            <input type="number" id="estoqueProdutos">
+                            <input type="text" id="unestoqueProdutos">
+                        </div>
+                        <div class="item6">
+                            <label for="componentes2">Componentes 2:</label>
+                            <input type="text" id="componentes2Produtos">
+                            <input type="number" id="quantidade2Produtos">
+                            <input type="text" id="un4Produtos" disabled>
+                        </div>
+                        <div class="item7">
+                            <label for="componentes3">Componentes 3:</label>
+                            <input type="text" id="componentes3Produtos">
+                            <input type="number" id="quantidade3Produtos">
+                            <input type="text" id="un5Produtos" disabled>
+                            <label for="data_cadastro">Data de Cadastro:</label>
+                            <input type="date" id="dataProdutos" disabled>
+                        </div>
+                        <div class="item8">
+                            <label for="componentes4">Componentes 4:</label>
+                            <input type="text" id="componentes4Produtos">
+                            <input type="number" id="quantidade4Produtos">
+                            <input type="text" id="un6Produtos" disabled>
+                        </div>
+                        <button class="cad cad2" type="submit"><strong>Cadastrar</strong></button>
+                    </div>
+                    <!-- Cadastro de Subprodutos -->
+                    <div id="cadastroSubprodutos" style="display: none;" class="cadastro">
+                        <div class="item1">
+                            <div class="esp1"></div>
+                            <label for="codigo">Código:</label>
+                            
+                            <input type="number" id="codigoSubprodutos" disabled>
+                            <div class="esp9"></div><div class="esp5"></div>
+                            <label for="un">Unidade Medida:</label>
+                            
+                            <select name="un" class="un" id="un1Subprodutos">
+                                <option value="KG">KG (Quilograma)</option>
+                            </select>
+                        </div>
+                        <div class="item2">
+                            <label for="nome">Nome:</label>
+                            <div class="esp2_5"></div>
+                            <input type="text" id="nomeSubprodutos">
+                        </div>
+                        <div class="item3">
+                            <label for="componentes">Componentes:</label>
+                            <div class="esp3"></div>
+                            <input type="number" id="componentesSubprodutos">
+                            <div class="esp2"></div>
+                            <label for="pm">Produção Mínima:</label>
+                            <input type="number" id="pmSubprodutos">
+                            <input type="text" id="un2Subprodutos">
+                            <label for="validade">Validade (Dias):</label>
+                            <div class="esp2_5"></div>
+                            <input type="number" id="validadeSubprodutos">
+                        </div>
+                        <div class="item4">
+                            <label for="quantidade">Quantidades:</label>
+                            <div class="esp8"></div>
+                        </div>
+                        <div class="item5">
+                            <label for="componentes1">Componentes 1:</label>
+                            <input type="text" id="componentes1Subprodutos">
+                            <input type="number" id="quantidade1Subprodutos">
+                            <input type="text" id="un3Subprodutos" disabled>
+                            <label for="estoque">Estoque Mínimo:</label>
+                            <input type="number" id="estoqueSubprodutos">
+                            <input type="text" id="unestoqueSubprodutos">
+                        </div>
+                        <div class="item6">
+                            <label for="componentes2">Componentes 2:</label>
+                            <input type="text" id="componentes2Subprodutos">
+                            <input type="number" id="quantidade2Subprodutos">
+                            <input type="text" id="un4Subprodutos" disabled>
+                        </div>
+                        <div class="item7">
+                            <label for="componentes3">Componentes 3:</label>
+                            <input type="text" id="componentes3Subprodutos">
+                            <input type="number" id="quantidade3Subprodutos">
+                            <input type="text" id="un5Subprodutos" disabled>
+                            <label for="data_cadastro">Data de Cadastro:</label>
+                            <input type="date" id="dataSubprodutos" disabled>
+                        </div>
+                        <div class="item8">
+                            <label for="componentes4">Componentes 4:</label>
+                            <input type="text" id="componentes4Subprodutos">
+                            <input type="number" id="quantidade4Subprodutos">
+                            <input type="text" id="un6Subprodutos" disabled>
+                        </div>
+                        <button class="cad cad2" type="submit"><strong>Cadastrar</strong></button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <script src="../static/js/menu.js"></script>
+    </body>
+</html>

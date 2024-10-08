@@ -1,0 +1,303 @@
+body{
+    font-family: sans-serif;
+}
+
+/* Informações de menu */
+
+.menu {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #FFB800;
+    overflow-x: hidden;
+    padding-top: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(ala.png), url(ala-logo.png);
+    background-size: auto, 100px auto, 50px auto;
+    background-repeat: no-repeat;
+    background-position: 50% 92%, 50% 92%, 90% 2%;
+}
+
+.photo-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: auto;
+  }  
+
+  h3{
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    color: black;
+  }
+
+i{
+    margin-right: 5px;
+}
+#sino{
+    display: inline-block;
+    font-size: 24px;
+    color: black;
+    margin-top: -5px;
+    margin-left: 20px;
+    line-height: 0px;
+}
+#edit{
+    background-color: #ffce52;
+}
+
+.dropdown-btn, .bot{
+    padding: 10px 20px;
+    width: 100%;
+    background-color: inherit;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+    border: none;
+}
+.bot3{
+    border-left: 4px solid black;
+}
+
+.dropdown-btn:hover, .bot:hover{
+    background-color: #ffc42f;
+}
+
+.menu .dropdown-container {
+    display: none;
+    padding-left: 20px;
+}
+
+.menu .dropdown-container a {
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+    color: black;
+    
+}
+
+.menu .dropdown-container a:hover {
+    background-color: #ffce52;
+}
+
+.cascata{
+    border: none;
+    border-left: 2px solid black;
+    margin-left: 8px;
+}
+
+/* Ícones */
+
+span{
+    position: relative;
+    top:4px;
+    margin-right: 2px;
+}
+
+#simb{
+    line-height: 0px;
+}
+
+/* Logo e Título */
+
+.content {
+    margin-left: 22%;
+    padding: 20px;
+}
+
+.logo{
+    width: 30%;
+    height: auto;
+    margin-left: 38%;
+    display: inline-block;
+}
+
+h1{
+    display: inline-block;
+    font-size: 2.50em;
+}
+.ala {
+    display: block;
+    width: 100px; 
+    height: auto; 
+    margin: auto;
+    margin-top: 170px;
+
+}
+
+/* Div retângulo, botões e inputs */
+
+.ret2{
+    position: relative;
+    display: block;
+    background: #E6E6E6;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px 10px 0px 0px;
+    width: 800px;
+    height: 350px;
+    padding: 2%;
+    top: 0px;
+    font-size: 18px;
+}
+
+.pai{
+    margin-left: 24%;
+    position: relative;
+    display: flex;
+    width: 70%;
+    height: 50%;
+}
+
+.cad{
+    text-align: center;
+    display: inline-block;
+    padding: 15px 40px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    margin: 0px 20px;
+    background-color: rgba(255, 178, 19, 1);
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-size: 20px;
+    color: black;
+    font-family: 'Poppins';
+    border: none;
+    margin-left: 24%;
+    margin-top: 109px;
+}
+
+.cad:before {
+    content: "";
+    position: absolute;
+    height: 150px;
+    width: 50px;
+    background : #ffffff;
+    left: -55px;
+    top: -40px;
+    transform: rotate(37deg);
+    transition: all .3s;
+    opacity: 0.3;
+}
+
+.cad:hover:before {
+    left:95%;
+}
+form{
+    width: 100%;
+    height: 100%;
+    margin-left: 10%;
+}
+
+.cad2{
+    margin-top: 20px;
+}
+.cad3{
+    margin-top: -0.5%;
+    margin-left: 35%;
+    margin-bottom: 10px;
+}
+/* Espaçamentos */
+
+.item2{
+    height: 50px; 
+}
+
+.esp2{
+    margin: 0.4%;
+}
+.esp2_5{
+    margin: 0.28%;
+}
+.esp3{
+    margin: 0.6%;
+}
+.esp5{
+    margin-right:11%;
+}
+.esp6{
+    margin: 1.8%;
+}
+.esp7{
+    margin:0.5%;
+}
+.esp9{
+    margin-right: 24%;
+}
+.esp0{
+    margin-right: 14%;
+}
+.esp1, .esp2,.esp2_5, .esp3, .esp5,
+.esp6, .esp7, .esp9, .esp0{
+    display: inline-block;
+    margin-top: 1%;
+}
+.esp1{
+    margin: 3%;
+    display: block;
+}
+.esp4{
+    display: block;
+    margin: 3%;
+}
+.esp8{
+    margin: 2%;
+    display: block;
+}
+
+select{
+    padding: 0.5%;
+    padding-left: -0.2%;
+    width: 18%;
+    margin-left: 0%;
+    border: 1px solid #ccc;
+}
+
+/* Personalização específica de inputs */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"], input[type="datetime"]{
+    text-align: center;
+}
+#numeroOP, #quantidade1OP, #quantidadeEn{
+    width: calc(10% - 10px);
+}
+#tipoOP, #dataOP{
+    width: calc(14% - 10px);
+}
+input[type="checkbox"]{
+    width: auto;
+    margin-left: 64%;
+}
+.unm0{
+    width: calc(20% - 10px);
+}
+.unm{
+    width: calc(5% - 10px);
+}
+
+.un{
+    width: 90%;
+}
+.gasto{
+    width: 100%;
+}
+table input[type="number"]{
+    width: 100%;
+}
