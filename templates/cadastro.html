@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cad.css">
+    <script src="https://cdn.jsdelivr.net/npm/imask"></script>
+    <title>Cadastro de Usuário</title>
+</head>
+<body class="pilar">
+<header class="coluna"></header>
+<div class="container coluna">
+    <div class="logo"></div>
+    <h2>Cadastro de Usuário</h2>
+    <form action="/cadastrar" method="post">
+        <div class="formDiv">
+            <label for="">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Nome" required>
+        </div>
+        <div class="formDiv">
+            <label for="">CPF:</label>
+            <input id= "cpfUser"  type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="CPF" maxlength="15" required>
+        </div>
+        <div class="formDiv">
+            <label for="">Email:</label>
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
+        </div>
+        <div class="formDiv">
+            <label for="">Telefone:</label>
+            <input type="tel" id="telefoneUser" name="telefone" pattern="\d({2}\)\d{5}\-\d{4}" placeholder="Telefone" required>
+        </div>
+        <div class="formLabel">
+            <label for="">Senha:</label>
+            <label for="">Confirmar Senha:</label>
+        </div>
+        <div class="formDivsub">
+            <input type="password" id="senhaUser" name="senha" placeholder="Senha" required>
+            <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme a Senha" required>
+        </div>
+        <div class="submitButton">
+            <input type="submit" value="Cadastrar">
+        </div>
+    </form>
+</div>
+<script src="cad.js"></script>
+</body>
+</html>

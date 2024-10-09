@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INPROLIB - Cadastro de Usuários</title>
+    <link rel="stylesheet" href="cadu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="menu">
+        <i class="fa-solid fa-bell" id="sino"></i>
+        <div class="photo-placeholder"></div>
+        <h3>User</h3>
+        <a href="/repositorios">
+            <button class="dropdown-btn bot2" style="font-size: 16px;">
+                <span class="material-symbols-outlined" id="simb">inventory_2</span>Repositórios
+            </button>
+        </a>
+        <a href="/">
+            <button class="dropdown-btn bot2" style="font-size: 16px;">
+                <span class="material-symbols-outlined" id="simb">post_add</span>Cadastro de Cursos
+            </button>
+        </a>
+        <a href="">
+            <button class="dropdown-btn bot2" style="font-size: 16px;">
+                <span class="material-symbols-outlined" id="simb">how_to_reg</span>Cadastro de Usuários
+            </button>
+        </a>
+        <a href="">
+            <button class="dropdown-btn bot2" style="font-size: 16px;">
+                <span class="material-symbols-outlined" id="simb">upload</span>Publicação de Conteúdos
+            </button>
+        </a>
+        <a href="/h">
+            <button class="dropdown-btn bot2" style="font-size: 16px;">
+                <span class="material-symbols-outlined" id="simb">feedback</span>Relatórios
+            </button>
+        </a>
+        <button class="dropdown-btn bot2" style="font-size: 16px;">
+            <span class="material-symbols-outlined" id="simb">settings</span>Opções
+        </button>
+        <div class="dropdown-container">
+            <a class="cascata" href="/">
+                <span class="material-symbols-outlined" id="simb">logout</span>Sair
+            </a>
+            <a class="cascata" href="/">
+                <span class="material-symbols-outlined" id="simb">unfold_more</span>Trocar função
+            </a>
+            <a class="cascata" id="toggleMode">
+                <span class="material-symbols-outlined" id="simb">routine</span>Modo Noturno
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Cadastro de Cursos</h1>
+
+        <div class="topo">
+            <h2>Informações do curso</h2>
+        </div>
+        <table class="table">
+            <tr>
+              <th><label for="">Nome do curso:</label></td>
+              <th><input type="text" placeholder="Digite o nome"></td>
+            </tr>
+            <tr>
+              <th><label for="">Descrição:</label></td>
+              <th><input type="text" class="" placeholder="Digite a descrição">
+              </td>
+            </tr>
+            <tr>
+                <th><label for="">Código:</label></td>
+                <th><input type="text" placeholder="Digite o código"></td>
+            </tr>
+          </table>
+          <hr>
+        <div class="meio">
+            <div class="lado1">
+            <div class="titulo">
+            <h2 class="tit">Vinculação de Coord. e Prof.</h2>
+            </div>
+            <table class="table2">
+                <tr>
+                  <th><label for="">Lista de professores</label></td>
+                </tr>
+                <tr>
+                  <td><input type="text" placeholder="Buscar por número ou matrícula"></td>
+                </tr>
+
+                <tr>
+                    <td><select name="" id="">
+                        <option value="">Selecionar Coordenador</option>
+                        <option value="">Afonso Lira</option>
+                        <option value="">Juliana Almeida</option>
+                        <option value="">Pablo Marçal</option>
+                    </select></td>
+                </tr>
+              </table>
+            </div>
+            <div class="lado2">
+            <div class="titulo">
+            <h2 class="tit">Vinculação de Alunos</h2>
+            </div>
+            <table class="table2">
+                <tr>
+                  <th><label for="">Lista de alunos</label></td>
+                </tr>
+                <tr>
+                  <td><input type="text" placeholder="Buscar por número ou matrícula"></td>
+                </tr>
+              </table>
+              <div class="botoes">
+                <button id="salvar" class="btn-success">Salvar</button>
+                <button id="cancelar" class="btn-danger">Cancelar</button>
+            </div>
+        </div>
+        <div>
+
+        </div>
+        
+    </div>
+    </div>
+    <script src="menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+:root {
+    /*Todas as Cores a serem usadas*/
+    --bs-blue: #00002D;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    /*Cores Principais do Site*/
+    --bs-primary: #0046E1;
+    --bs-secondary: #00002D;
+    --bs-terceary: #6c757d;
+    --bs-submit: #28A745;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    /* Variações da cor principal */
+    --bs-primary-light-1: #3369E8;  
+    --bs-primary-light-2: #668BF0;  
+    --bs-primary-light-3: #99ACF7;  
+    --bs-primary-light-4: #CCD4FF;  
+    --bs-primary-mid: #005ca8;
+    --bs-primary-dark-1: #003ABB;   
+    --bs-primary-dark-2: #002C94;   
+    --bs-primary-dark-3: #001E6E;   
+    --bs-primary-dark-4: #001048;  
+    /*Cores RGB*/
+    --bs-primary-rgb: 0, 0, 45;
+    --bs-secondary-rgb: 108, 117, 125;
+    --bs-success-rgb: 25, 135, 84;
+    --bs-info-rgb: 13, 202, 240;
+    --bs-warning-rgb: 255, 193, 7;
+    --bs-danger-rgb: 220, 53, 69;
+    --bs-light-rgb: 248, 249, 250;
+    --bs-dark-rgb: 33, 37, 41;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 33, 37, 41;
+    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-text: var(--bs-dark);
+    --bs-body-bg: var(--bs-light);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bs-body-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+header {
+    width: 100%;
+    height: 60px;
+    background-color: var(--bs-primary-mid);
+    display: flex;
+}
+.pilar{
+    flex-direction: column;
+}
+.coluna{
+    flex: 1;
+}
+.container {
+    background-color: var(--bs-body-bg);
+    padding: 20px;
+    width: 60%;
+}
+.logo {
+    display: inline-block;
+    padding: 50px 90px;
+    background-position: -30px;
+    background-image: url(LOGO_AZUL_ESQUERDO\ -\ SEM\ FUNDO.png);
+    background-repeat: no-repeat;
+    background-size: 300px;
+}
+h2 {
+    text-align: center;
+    margin-top: -72px;
+    margin-bottom: 60px;
+    font-size: 24px;
+    color: var(--bs-body-text);
+}
+.formLabel {
+    display: inline-block;
+    width: 100%;
+}
+.formLabel label:first-child{
+    margin-right: 45%;
+}
+.formDivsub {
+    display: flex;
+    justify-content: space-between;
+}
+.formDivsub input {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid var(--bs-gray-400);
+    border-radius: 5px;
+    font-size: 14px;
+}
+.formDiv {
+    margin-bottom: 15px;
+}
+.formDiv input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--bs-gray-400);
+    border-radius: 5px;
+    font-size: 14px;
+}
+.submitButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+input[type="submit"] {
+    width: 40%;
+    padding: 10px;
+    background-color: var(--bs-submit);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: var(--bs-success);
+}
