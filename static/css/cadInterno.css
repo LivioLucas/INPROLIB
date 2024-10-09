@@ -84,7 +84,7 @@ body{
     padding-top: 20px;
     font-family: sans-serif;
 
-    
+    background-image: url(LOGO\ BRANCO\ ESQUERDO\ -\ SEM\ FUNDO.png);
     background-size: 300px auto;;
     background-repeat: no-repeat;
     background-position: -25% 125%;
@@ -100,9 +100,9 @@ body{
     margin: auto;
     background-color: aliceblue;
 
-    background-size: cover; /* Faz a imagem cobrir toda a div */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
 }
 
@@ -111,24 +111,7 @@ h3{
     justify-content: center;
     font-family: sans-serif;
     color: var(--bs-font-color);
-}
-
-h2{
-    font-size: 26px;
-    color: var(--bs-body-color);
-    margin-left: 20px;
-    margin-top: 20px;
-    display: inline-block;
-}
-
-h1{
-    margin-top: 0px;
-    margin-bottom: 10px;
-}
-
-/* p{
-    font-size: 14px;
-} */
+  }
 
 i{
     margin-right: 5px;
@@ -200,60 +183,83 @@ span{
     line-height: 0px;
 }
 
-/* Logo e Título */
-
 .content {
-    margin-left: 24%;
+    margin-left: 22%;
     padding: 20px;
 }
 
-.barra{
+h1{
+    display: inline-block;
+    font-size: 2.50em;
+}
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.input-column {
+    flex: 1;
+    margin-right: 90px;
+}
+
+.input-column:last-child {
+    margin-right: 0;
+}
+
+.disabled-input {
     background-color: var(--bs-primary);
-    color: var(--bs-white);
-    width: 90%;
-    height: 165px;
-    border-radius: 20px;
+    color: var(--bs-white); 
+    border: none;
+    padding: 5px;
+    font-size: 20px;
+    width: 60%; 
+    border-radius: 5px;
+    text-align: center; 
 }
-
-.barra2{
-    margin-top: 20px;
-    background-color: var(--bs-primary-light-3);
-    color: var(--bs-font-color);
-    width: 90%;
-    height: 300px;
-    border-radius: 20px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+.input-normal {
+    background-color: var(--bs-light);
+    color: var(--bs-dark); 
+    border: 1px solid var(--bs-primary); 
+    padding: 4px;
+    font-size: 14px;
+    width: 60%;
+    border-radius: 5px;
+    margin-bottom: 25px; 
 }
-
-.artigos {
-    display: flex;
-    justify-content: space-evenly;
+label {
+    font-weight: 500;
+    margin-top: 10px;
+    display: block; 
+    text-align: left;
+    padding-left: 98px;
 }
-
-.artigo {
-    background-color: #0046E1;
-    color: black;
-    width: 190px;
-    height: 210px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+button{
     font-weight: bold;
+    margin-top: 10px;
+    display: block; 
+    width: 25%;
+
+}
+.save-button {
+    background-color: #20c997;
+    color: black;
+    border: none;
+    padding: 5px 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.busca{
-    width: 90%;
-    padding: 8px;
-    margin: 45px 40px 15px 35px;
-    border-radius: 20px;
+.save-button:hover {
+    background-color: #218838;
 }
 
-.label1{
-    margin-left: 45px;
-}
-
-.label1, .label2{
-    margin-right: 10px;
+.input-column {
+    text-align: center;
 }

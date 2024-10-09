@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INPROLIB REPOSITORIO</title>
+    <link rel="stylesheet" href="../static/css/cadInterno.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</head>
+<body>
+    <div class="menu">
+        <i class="fa-solid fa-bell" id="sino"></i>
+        <div class="photo-placeholder"></div>
+        <h3>User</h3>
+        <a href="/repositorios"><button class="dropdown-btn bot2" style="font-size: 16px;">
+            <span class="material-symbols-outlined" id="simb">inventory_2</span>Repositórios</button></a>
+        <a href="/cadcurso"><button class="dropdown-btn bot2" style="font-size: 16px;">
+            <span class="material-symbols-outlined" id="simb">post_add</span>Cadastro de Cursos</button></a>
+        <a href=""><button class="dropdown-btn bot2" style="font-size: 16px;">
+            <span class="material-symbols-outlined" id="simb">how_to_reg</span>Cadastro de Usuários</button></a>
+        <a href=""><button class="dropdown-btn bot2" style="font-size: 16px;">
+            <span class="material-symbols-outlined" id="simb">upload</span>Publicação de Conteúdos</button></a>
+        <a href="/h"><button class="dropdown-btn bot2" style="font-size: 16px;">
+            <span class="material-symbols-outlined" id="simb">feedback</span>Relatórios</button></a>
+        <button class="dropdown-btn bot2" style="font-size: 16px;">
+            <span class="material-symbols-outlined" id="simb">settings</span>Opções</button>
+        <div class="dropdown-container">
+            <a class="cascata" href="/"><span class="material-symbols-outlined" id="simb">logout</span>Sair</a>
+            <a class="cascata" href="/"><span class="material-symbols-outlined" id="simb">unfold_more</span>Trocar função</a>
+            <a class="cascata" id="toggleMode"><span class="material-symbols-outlined" id="simb">routine</span>Modo Noturno</a>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Cadastro de Usuários</h1>
+        <div class="input-container">
+        </div>
+        <div class="input-container">
+            <div class="input-column">
+                <input type="text" value="Professores" disabled class="disabled-input">
+                <label>Nome do Professor</label>
+                <input type="text" placeholder="Insira o nome do Professor" class="input-normal">
+                <label>Matrícula do Professor</label>
+                <input type="text" placeholder="Insira a matrícula" class="input-normal">
+                <label>Email do Professor</label>
+                <input type="email" placeholder="Insira o Email" class="input-normal">
+                <label>Telefone do Professor</label>
+                <input type="tel" placeholder="Insira o Telefone" class="input-normal" oninput="maskTelefone(this)">
+                <label>Disciplina</label>
+                <select class="input-normal">
+                    <option value="" disabled selected>Selecionar Disciplina</option>
+                    <option value="Algoritmos e Estruturas de Dados">Algoritmos e Estruturas de Dados</option>
+                    <option value="Dermatologia Estética">Dermatologia Estética</option>
+                    <option value="Biologia Molecular">Biologia Molecular</option>
+                    <option value="Controladoria">Controladoria</option>
+                </select>
+                <label>Curso</label>
+                <select class="input-normal">
+                    <option value="" disabled selected>Selecionar Curso</option>
+                    <option value="curso1">Análise e Desenvolvimento de Sistemas</option>
+                    <option value="curso2">Estética e Cosmética</option>
+                    <option value="curso3">Biomedicina</option>
+                    <option value="curso4">Contabilidade</option>
+                </select>
+                
+                <button class="save-button">Salvar</button>
+            </div>
+            <div class="input-column">
+                <input type="text" value="Alunos" disabled class="disabled-input">
+                <label>Nome do Aluno</label>
+                <input type="text" placeholder="Insira o nome do Aluno" class="input-normal">
+                <label>Matrícula do Aluno</label>
+                <input type="text" placeholder="Insira a matrícula" class="input-normal">
+                <label>Email do Aluno</label>
+                <input type="email" placeholder="Insira o Email" class="input-normal">
+                <label>Telefone do Aluno</label>
+                <input type="tel" placeholder="Insira o Telefone" class="input-normal" oninput="maskTelefone(this)">
+                <label>Curso</label>
+                <select class="input-normal">
+                    <option value="" disabled selected>Selecionar Curso</option>
+                    <option value="curso1">Análise e Desenvolvimento de Sistemas</option>
+                    <option value="curso2">Estética e Cosmética</option>
+                    <option value="curso3">Biomedicina</option>
+                    <option value="curso4">Contabilidade</option>
+                </select>
+                <button class="save-button">Salvar</button>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/cadInterno.js"></script>
+    <script>
+        function maskTelefone(input) {
+            // Remove todos os caracteres não numéricos
+            let value = input.value.replace(/\D/g, '');
+
+            // Aplica a máscara (ex: (99) 99999-9999)
+            if (value.length > 6) {
+                value = value.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+            } else if (value.length > 2) {
+                value = value.replace(/^(\d{2})(\d{4})(\d+)$/, '($1) $2-$3');
+            } else if (value.length > 1) {
+                value = value.replace(/^(\d{2})(\d+)$/, '($1) $2');
+            }
+            input.value = value;
+        }
+    </script>
+</body>
+</html>
