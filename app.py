@@ -1,10 +1,19 @@
 from flask import Flask, render_template, request
 from db_config import get_db_connection
+from flask_mail import Mail, Message
 import mariadb
 
 
-app = Flask(__name__)
 
+app = Flask(__name__)
+#CONFIGURAÇÀO PARA FUNÇÃO DE ENVIO DE EMAIL NO BOTÃO ESQUECI MINHA SENHA
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'inprolibfacinpro@gmail.com' 
+app.config['MAIL_PASSWORD'] = 'chew suix ehhy sayn'#Facinproprojetointegrador3
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 #aqui temos módulos para renderizar página, para navegação.
 @app.route("/")
 def index(): #este método faz com que a página inicial do projeto seja o "login.html"
@@ -38,7 +47,7 @@ def checkar_login():
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        query = "SELECT nome, senha FROM usuario WHERE nome = %s AND senha = %s"
+        query = "SELECT email, senha FROM usuario WHERE email = %s AND senha = %s"
         cursor.execute(query,(login, password))
         result = cursor.fetchone()
         cursor.close()
@@ -55,6 +64,7 @@ def checkar_login():
         print(f"Error connecting to MariaDB Platform: {e}")
         return render_template('index.html')
     
+
 
 @app.route("/cadastrarUsuario", methods=['POST'])
 def cadastrarUsuario():
@@ -84,6 +94,16 @@ def cadastrarUsuario():
     else:
         print("senhas não conferem")
         return render_template("cadastro.html")
+
+
+@app.route('/esquecisenha', methods = ['GET','POST'])
+def recuperaSenha():
+    mensagem = Message("TESTE", sender = 'noreply@demo.com', recipients = ['inprolibfacinpro@gmail.com'])
+    mensagem.body = "Ô BURRO, A PORRA DA SENHA É 123456"
+    mail.send(mensagem)
+    print("enviou o email")
+        
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True)    
