@@ -1,0 +1,81 @@
+
+CREATE TABLE Usuario (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    tipo ENUM('Funcionário', 'Professor', 'Coordenador', 'Secretaria', 'Bibliotecaria', 'Aluno') NOT NULL,
+    data_cadastro DATE NOT NULL
+);
+
+
+CREATE TABLE Curso (
+    id_curso INT AUTO_INCREMENT PRIMARY KEY,
+    nome_curso VARCHAR(255) NOT NULL,
+    id_coordenador INT,
+    FOREIGN KEY (id_coordenador) REFERENCES Usuario(id_usuario) ON DELETE SET NULL
+);
+
+
+CREATE TABLE Usuario_Curso (
+    id_usuario INT,
+    id_curso INT,
+    PRIMARY KEY (id_usuario, id_curso),
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_curso) REFERENCES Curso(id_curso) ON DELETE CASCADE
+);
+
+ 
+CREATE TABLE Publicacao (
+    id_publicacao INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    data_publicacao DATE NOT NULL,
+    id_autor INT,
+    id_curso INT,
+    tipo ENUM('Tese', 'Monografia', 'TCC') NOT NULL,
+    status ENUM('Publicado', 'Desativado') NOT NULL,
+    arquivo VARCHAR(255), -- Caminho para o arquivo de upload
+    FOREIGN KEY (id_autor) REFERENCES Usuario(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_curso) REFERENCES Curso(id_curso) ON DELETE CASCADE
+);
+
+
+CREATE TABLE Relatorio (
+    id_relatorio INT AUTO_INCREMENT PRIMARY KEY,
+    tipo ENUM('Por Curso', 'Por Data', 'Por Pessoa') NOT NULL,
+    data_geracao DATE NOT NULL
+);
+
+
+
+CREATE TABLE Funcao (
+    id_funcao INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE Logs (
+    id_log INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT,
+    atividade VARCHAR(255) NOT NULL,
+    data_hora DATETIME NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) ON DELETE CASCADE
+);
+
+
+CREATE TABLE Usuario_Funcao (
+    id_usuario INT,
+    id_funcao INT,
+    PRIMARY KEY (id_usuario, id_funcao),
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_funcao) REFERENCES Funcao(id_funcao) ON DELETE CASCADE
+);
+
+
+CREATE TABLE Esqueci_Senha (
+    id_solicitacao INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    data_solicitacao DATETIME NOT NULL,
+    status ENUM('Ativo', 'Expirado') NOT NULL
+);
