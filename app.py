@@ -36,6 +36,9 @@ def cadastro():
 def cadcurso():
     return render_template ("cadcurso.html")
 
+@app.route("/formularioMandaSenha")
+def formularioSenha():
+    return render_template ("esqueciasenha.html")
 
 #daqui pra frente temos módulos de operação, consulta (login), inserção (cadastros), e relatórios (estoque).
 #rota abaixo é para login no sistema, pegando diretamente do form de login na pagina login.html
@@ -96,9 +99,11 @@ def cadastrarUsuario():
         return render_template("cadastro.html")
 
 
+
 @app.route('/esquecisenha', methods = ['GET','POST'])
 def recuperaSenha():
-    mensagem = Message("TESTE", sender = 'noreply@demo.com', recipients = ['inprolibfacinpro@gmail.com'])
+    emailParaRecuperar = request.form.get('emailRecoverySenha')
+    mensagem = Message("TESTE", sender = 'noreply@demo.com', recipients = [emailParaRecuperar])
     mensagem.body = "Ô BURRO, A PORRA DA SENHA É 123456"
     mail.send(mensagem)
     print("enviou o email")
@@ -107,3 +112,24 @@ def recuperaSenha():
 
 if __name__ == "__main__":
     app.run(debug=True)    
+
+
+#este é um exemplo de acesso a uma rota python pelo javascript
+
+#const url = '/minha-rota';  // O endpoint Flask que você deseja chamar
+#const dados = { chave: 'valor' };  // Os dados a serem enviados
+
+#fetch(url, {
+#method: 'POST',  // Método de requisição (GET, POST, etc.)
+#headers: {
+#  'Content-Type': 'application/json',  // Tipo de conteúdo a ser enviado
+#  },
+#  body: JSON.stringify(dados),  // Dados convertidos em JSON
+#})
+#.then(response => response.json())  // Converte a resposta em JSON
+#.then(data => {
+#  console.log('Resposta do servidor:', data);
+#})
+#.catch(error => {
+# console.error('Erro:', error);
+#});
