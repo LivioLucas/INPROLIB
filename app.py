@@ -66,9 +66,32 @@ def checkar_login():
     except mariadb.Error as e:
         print(f"Error connecting to MariaDB Platform: {e}")
         return render_template('index.html')
-    
+#MÉTODO PARA CADASTRO DE CURSOS (PRIMITIVO) FEITO POR LÍVIO    
+@app.route("/cadastrarCurso", methods=['POST'])
+def cadastrarCurso():
+    nomeCurso = request.form.get('nomeCurso')
+    descricaoCurso = request.form.get('descricaoCurso')
+    codigoCurso = request.form.get('codigoCurso')
+    print(nomeCurso, descricaoCurso, codigoCurso)
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        insert_query = """
+        INSERT INTO curso (nome_curso, descricao_curso, codigo_curso)
+                VALUES (%s, %s, %s)
+            """
+        cursor.execute(insert_query, (nomeCurso, descricaoCurso, codigoCurso))
+        conn.commit()
+        cursor.close()
+        conn.close()
+        print("curso cadastrado!")
+        return render_template("repositorios.html")
+    except mariadb.Error as e:
+        print(f"Error connecting to MariaDB Platform: {e}")
+        return render_template('cadcurso.html')
+      
 
-
+#MÉTODO PARA CADASTRO DE USUÁRIOS POR FORA DO SISTEMA, FEITO POR LÍVIO
 @app.route("/cadastrarUsuario", methods=['POST'])
 def cadastrarUsuario():
     nomeUser = request.form.get('nome')
@@ -99,16 +122,30 @@ def cadastrarUsuario():
         return render_template("cadastro.html")
 
 
-
-@app.route('/esquecisenha', methods = ['GET','POST'])
+#MÉTODO DE RECUPERAÇÃO DE SENHA (PRIMITIVO), FEITO POR LÍVIO
+@app.route('/esquecisenha', methods=['GET', 'POST'])
 def recuperaSenha():
     emailParaRecuperar = request.form.get('emailRecoverySenha')
-    mensagem = Message("TESTE", sender = 'noreply@demo.com', recipients = [emailParaRecuperar])
-    mensagem.body = "Ô BURRO, A PORRA DA SENHA É 123456"
-    mail.send(mensagem)
-    print("enviou o email")
-        
-    return render_template('index.html')
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        pegar_senha = "SELECT senha FROM usuario"
+        cursor.execute("SELECT senha FROM usuario WHERE email = %s", (emailParaRecuperar,))
+        pegar_senha = cursor.fetchone()
+        if pegar_senha:
+            pegar_senha = pegar_senha[0] # ACESSA O VALOR DO CAMPO PARA QUE O DADO NÃO VENHA DESSA FORMA (123456,) POR EXEMPLO
+        cursor.close()
+        conn.close()
+        print(pegar_senha)         
+        mensagem = Message("Recuperação de Senha", sender='noreply@demo.com', recipients=[emailParaRecuperar])
+        mensagem.body = f"A sua senha é: {pegar_senha} NÃO COMPARTILHE ESSE EMAIL COM NINGUÉM!"
+        mail.send(mensagem)
+        print("Email enviado com sucesso")
+        return render_template('index.html')
+    except mariadb.Error as e:
+        print(f"Erro ao conectar ao MariaDB: {e}")
+        return render_template('index.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)    

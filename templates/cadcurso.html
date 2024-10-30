@@ -55,6 +55,7 @@
     </div>
 
     <div class="content">
+      <form action="/cadastrarCurso" method="POST">  
         <h1>Cadastro de Cursos</h1>
 
         <div class="topo">
@@ -63,16 +64,16 @@
         <table class="table">
             <tr>
               <th><label for="">Nome do curso:</label></td>
-              <th><input type="text" placeholder="Digite o nome"></td>
+              <th><input type="text" name="nomeCurso" placeholder="Digite o nome"></td>
             </tr>
             <tr>
               <th><label for="">Descrição:</label></td>
-              <th><input type="text" class="" placeholder="Digite a descrição">
+              <th><input type="text" name="descricaoCurso" class="" placeholder="Digite a descrição">
               </td>
             </tr>
             <tr>
                 <th><label for="">Código:</label></td>
-                <th><input type="text" placeholder="Digite o código"></td>
+                <th><input type="text" name="codigoCurso" placeholder="Digite o código"></td>
             </tr>
           </table>
           <hr>
@@ -112,15 +113,16 @@
                 </tr>
               </table>
               <div class="botoes">
-                <button id="salvar" class="btn-success">Salvar</button>
-                <button id="cancelar" class="btn-danger">Cancelar</button>
+                <button id="salvar" type="submit" class="btn-success">Salvar</button>
+                
             </div>
         </div>
         <div>
 
         </div>
-        
+      </form>
     </div>
+      
     </div>
     <script src="../static/js/menu.js"></script>
 </body>

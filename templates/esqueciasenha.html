@@ -3,12 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recupere sua Senha</title>
+    <title>Tela de login</title>
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
-    <form action="/esquecisenha" method="post">
-        <input type="email" name="emailRecoverySenha" >
-        <input type="submit" value="ENVIAR E-MAIL">
+    <h1 class="titulo">Bem-vindo ao Repositório Institucional</h1>
+    <div class="linhas">
+        <div class="linhas_colorida_1"></div>
+        <div class="linhas_colorida_2"></div>
+    
+
+
+    </div>
+    <img class="logo" src="../static/img/logo.png" alt="logo">
+    <form class="login" action="/esquecisenha" method="POST">  
+        <div class="box-user">
+            <input type="text" name="emailRecoverySenha" placeholder="   DIGITE SEU EMAIL" required>
+            <label class="login1">Digite Seu Email</label>
+        </div>
+        <div class="box-user">
+            <div class="box-user">
+
+                <input type="submit" value="ENVIAR EMAIL">
+                
+            </div>
+        </div>
+
     </form>
     
 </body>
