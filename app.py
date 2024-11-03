@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from db_config import get_db_connection
 from flask_mail import Mail, Message
 import mariadb
+import random
 
 
 
