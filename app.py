@@ -1,10 +1,15 @@
 from flask import Flask, render_template, request
 from db_config import get_db_connection
 from flask_mail import Mail, Message
+from datetime import datetime
 import mariadb
-import random
+import os
 
+#IMPORTANTE DENTRO DESSE REPOSITÓRIO TEM O ARQUIVO SQL DO BANCO DE DADOS DO PROJETO, IMPORTE ELE QUANDO FOR USAR
 
+#AQUI DEFINIMOS O CAMINHO DO ARQUIVO QUE SERÁ SALVO
+#SERÁ NECESSARIO AJUSTAR CASO SEJA FEITO EM OUTRA MAQUINA
+DIRETORIO_upload = "C:\\Users\\assd1\\OneDrive\\Documentos\\GitHub\\INPROLIB\\arquivos\\upload"
 
 app = Flask(__name__)
 #CONFIGURAÇÀO PARA FUNÇÃO DE ENVIO DE EMAIL NO BOTÃO ESQUECI MINHA SENHA
@@ -46,6 +51,11 @@ def cadcurso():
 def formularioSenha():
 # rota para a renderização da pagina de inserção de email para solicitar recuperação de senha "formularioMandaSenha.html"
     return render_template ("esqueciasenha.html")
+
+@app.route("/publicacao_conteudo")
+def publicacao_conteudo():
+# rota para a renderização da pagina de publicação de conteudo "publicacao_conteudo.html"
+    return render_template ("publicar_conteudo.html")
 
 #daqui pra frente temos módulos de operação, consulta (login), inserção (cadastros), e relatórios (estoque).
 #rota abaixo é para login no sistema, pegando diretamente do form de login na pagina login.html
@@ -100,6 +110,8 @@ def cadastrarCurso():
     descricaoCurso = request.form.get('descricaoCurso')
     # Obtém o valor do campo 'codigoCurso' do formulário enviado via POST.
     codigoCurso = request.form.get('codigoCurso')
+    nomeCoordenador = request.form.get('coordenadorCurso')
+    credCurso = request.form.get('credCurso')
     
     # Impressão dos dados obtidos do formulário para verificação.
     print(nomeCurso, descricaoCurso, codigoCurso)
@@ -110,15 +122,18 @@ def cadastrarCurso():
         conn = get_db_connection()
         # Cria um cursor para executar comandos SQL no banco de dados.
         cursor = conn.cursor()
+        cursor.execute('SELECT id_usuario FROM usuario WHERE nome = %s', (nomeCoordenador,))
+        id_coordenador = cursor.fetchone()[0] 
+        
         
         # Define a consulta SQL para inserir um novo curso na tabela 'curso'.
         insert_query = """
-        INSERT INTO curso (nome_curso, descricao_curso, codigo_curso)
-        VALUES (%s, %s, %s)
+        INSERT INTO curso (nome_curso, descricao_curso, codigo_curso, id_coordenador, autorizacao)
+        VALUES (%s, %s, %s, %s, %s)
         """  # Query para inserção de dados na tabela 'curso'.
         
         # Executa a consulta SQL passando os dados do curso como parâmetros.
-        cursor.execute(insert_query, (nomeCurso, descricaoCurso, codigoCurso))
+        cursor.execute(insert_query, (nomeCurso, descricaoCurso, codigoCurso, id_coordenador, credCurso))
         
         # Confirma as alterações no banco de dados.
         conn.commit()
@@ -246,6 +261,63 @@ def recuperaSenha():
         # Renderiza a página 'index.html' em caso de erro.
         return render_template('index.html')
 
+#MÉTODO DE ENVIO DE CONTEÚDO (PRIMITIVO), FEITO POR LÍVIO
+@app.route('/upload_conteudo', methods=['POST'])
+def upload_conteudo():
+    # Obtenha o arquivo enviado pelo formulário
+    arquivo = request.files['publicarConteudo']
+    # AQUI GUARDAMOS O NOME DO ARQUIVO EM UMA VARIAVEL
+    nome_do_conteudo = arquivo.filename
+    # AQUI É O MÉTODO PARA SALVAR O ARQUIVO NA PASTA DESEJADA
+    arquivo.save(os.path.join(DIRETORIO_upload, nome_do_conteudo))
+    # AQUI SALVAMOS O CAMINHO COMPLETO DO ARQUIVO NUMA VARIAVEL
+    caminho_do_conteudo = os.path.join(DIRETORIO_upload, nome_do_conteudo)
+    # OBTENDO A DATA E HORA ATUAL PARA SALVAR NO BANCO DE DADOS
+    timestamp_atual = datetime.now()
+    # Obtendo o valor do campo 'nomeAutor' do formulário enviado via POST.
+    nomeAutor = request.form.get('nomeAutor')
+    # Obtendo o valor do campo 'nomeCursoAutor' do formulário enviado via POST.
+    nomeCurso = request.form.get('nomeCursoAutor')
+    tipoArquivo = request.form.get('tipoArquivo')
+    print(timestamp_atual)
+    print(caminho_do_conteudo)
+    try:
+        # Chama a função 'get_db_connection' para estabelecer uma conexão com o banco de dados.
+        conn = get_db_connection()
+        # Cria um cursor para executar comandos SQL no banco de dados.
+        cursor = conn.cursor()
+
+        # Busca o id_usuario com base no nome do autor
+        cursor.execute('SELECT id_usuario FROM usuario WHERE nome = %s', (nomeAutor,))
+        id_usuario = cursor.fetchone()[0]  # Pega apenas o valor do ID
+
+        # Busca o id_curso com base no nome do curso
+        cursor.execute('SELECT id_curso FROM curso WHERE nome_curso = %s', (nomeCurso,))
+        id_curso = cursor.fetchone()[0]  # Pega apenas o valor do ID
+
+        # Insere os dados na tabela publicacao
+        cursor.execute(
+           "INSERT INTO publicacao (titulo, arquivo, data_publicacao, id_autor, id_curso, tipo) VALUES (%s, %s, %s, %s, %s, %s)", 
+           (nome_do_conteudo, caminho_do_conteudo, timestamp_atual, id_usuario, id_curso, tipoArquivo)
+        )
+
+        # Comita as alterações e fecha a conexão
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        print("Funcionou")
+
+        
+
+        return render_template('repositorios.html')
+    
+    except mariadb.Error as e:
+        # Captura e imprime qualquer erro que ocorra ao tentar conectar ao banco de dados.
+        print(f"Erro ao conectar ao MariaDB: {e}")
+        # Renderiza a página 'index.html' em caso de erro.
+        return render_template('repositorios.html')
+    
 
 if __name__ == "__main__":
     app.run(debug=True)    
