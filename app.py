@@ -54,8 +54,22 @@ def formularioSenha():
 
 @app.route("/publicacao_conteudo")
 def publicacao_conteudo():
-# rota para a renderização da pagina de publicação de conteudo "publicacao_conteudo.html"
-    return render_template ("publicar_conteudo.html")
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        pegar_autor= "SELECT nome FROM usuario"
+        cursor.execute(pegar_autor)
+        autores = cursor.fetchall()  
+        cursor = conn.cursor()
+        pegar_cursos = "SELECT nome_curso FROM curso"
+        cursor.execute(pegar_cursos)
+        cursos = cursor.fetchall()    
+        return render_template("publicacao.html", cursos=cursos, autores=autores) 
+    except mariadb.Error as e:
+        print(f"Error connecting to MariaDB Platform: {e}")
+        return render_template('home.html')    
+
+  
 
 #daqui pra frente temos módulos de operação, consulta (login), inserção (cadastros), e relatórios (estoque).
 #rota abaixo é para login no sistema, pegando diretamente do form de login na pagina login.html
@@ -279,6 +293,10 @@ def upload_conteudo():
     # Obtendo o valor do campo 'nomeCursoAutor' do formulário enviado via POST.
     nomeCurso = request.form.get('nomeCursoAutor')
     tipoArquivo = request.form.get('tipoArquivo')
+    nome_arquivo = request.form.get('nomeAquivo')
+    print(nome_arquivo)
+    assunto_publicacao = request.form.get('assuntoPublicacao')
+    ano_autoria = request.form.get('ano_autoria')
     print(timestamp_atual)
     print(caminho_do_conteudo)
     try:
@@ -297,8 +315,8 @@ def upload_conteudo():
 
         # Insere os dados na tabela publicacao
         cursor.execute(
-           "INSERT INTO publicacao (titulo, arquivo, data_publicacao, id_autor, id_curso, tipo) VALUES (%s, %s, %s, %s, %s, %s)", 
-           (nome_do_conteudo, caminho_do_conteudo, timestamp_atual, id_usuario, id_curso, tipoArquivo)
+           "INSERT INTO publicacao (titulo, arquivo, data_publicacao, id_autor, id_curso, tipo, nome_arquivo, assuntos_relacionados, data_autoria) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+           (nome_do_conteudo, caminho_do_conteudo, timestamp_atual, id_usuario, id_curso, tipoArquivo, nome_arquivo, assunto_publicacao, ano_autoria)
         )
 
         # Comita as alterações e fecha a conexão

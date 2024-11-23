@@ -78,12 +78,15 @@ CREATE TABLE IF NOT EXISTS `publicacao` (
   `tipo` enum('Tese','Dissertação','Monografia','TCC') NOT NULL,
   `status` enum('Publicado','Desativado') NOT NULL,
   `arquivo` varchar(255) DEFAULT NULL,
+  `nome_arquivo` varchar(255) DEFAULT NULL,
+  `assuntos_relacionados` varchar(255) DEFAULT NULL,
+  `data_autoria` date DEFAULT NULL,
   PRIMARY KEY (`id_publicacao`),
   KEY `id_autor` (`id_autor`),
   KEY `id_curso` (`id_curso`),
   CONSTRAINT `publicacao_ibfk_1` FOREIGN KEY (`id_autor`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE,
   CONSTRAINT `publicacao_ibfk_2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Exportação de dados foi desmarcado.
 
