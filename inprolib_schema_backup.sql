@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `publicacao` (
   KEY `id_curso` (`id_curso`),
   CONSTRAINT `publicacao_ibfk_1` FOREIGN KEY (`id_autor`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE,
   CONSTRAINT `publicacao_ibfk_2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Exportação de dados foi desmarcado.
 
@@ -108,8 +108,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `cpf` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `tipo` enum('Funcionário','Professor','Coordenador','Secretaria','Bibliotecaria','Aluno') NOT NULL,
+  `foto_perfil` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Exportação de dados foi desmarcado.
 
