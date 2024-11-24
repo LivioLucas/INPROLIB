@@ -108,9 +108,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `cpf` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `tipo` enum('Funcionário','Professor','Coordenador','Secretaria','Bibliotecaria','Aluno') NOT NULL,
-  PRIMARY KEY (`id_usuario`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Exportação de dados foi desmarcado.
 

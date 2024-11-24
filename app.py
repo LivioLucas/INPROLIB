@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from db_config import get_db_connection
 from flask_mail import Mail, Message
 from datetime import datetime
@@ -92,6 +92,13 @@ def checkar_login():
         cursor.execute(query, (login, password))
         # Obtém o primeiro resultado da consulta (se houver).
         result = cursor.fetchone()
+        query2 = "SELECT foto_perfil FROM usuario WHERE email = %s"
+        cursor.execute(query2, (login,))
+        imagem = cursor.fetchone()[0]
+        query3 = "SELECT nome FROM usuario WHERE email = %s"
+        cursor.execute(query3, (login,))
+        nome = cursor.fetchone()[0]        
+        print(imagem)  
         # Fecha o cursor para liberar recursos.
         cursor.close()
         # Fecha a conexão com o banco de dados.
@@ -101,11 +108,12 @@ def checkar_login():
         if result:
             print("login funcionou")  # Mensagem de sucesso no console.
             # Renderiza a página 'repositorios.html' em caso de login bem-sucedido.
-            return render_template('repositorios.html')
+            return render_template('repositorios.html',imagem = imagem, nome = nome)
         else:
             print("login não funcionou, mas mesmo assim conectou no BD")  # Mensagem de falha no login.
             # Renderiza a página 'index.html' em caso de falha no login.
             return render_template('index.html')
+
 
     except mariadb.Error as e:
         # Captura e imprime qualquer erro que ocorra ao tentar conectar ao banco de dados.
