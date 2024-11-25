@@ -9,7 +9,9 @@ import os
 
 #AQUI DEFINIMOS O CAMINHO DO ARQUIVO QUE SERÁ SALVO
 #SERÁ NECESSARIO AJUSTAR CASO SEJA FEITO EM OUTRA MAQUINA
-DIRETORIO_upload = "C:\\Users\\assd1\\OneDrive\\Documentos\\GitHub\\INPROLIB\\arquivos\\upload"
+DIRETORIO_upload = "C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\INPROLIB\\arquivos\\upload"
+DIRETORIO_fotoPerfil = "C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\INPROLIB\\arquivos\\fotoperfil"
+
 
 app = Flask(__name__)
 #CONFIGURAÇÀO PARA FUNÇÃO DE ENVIO DE EMAIL NO BOTÃO ESQUECI MINHA SENHA
@@ -189,7 +191,11 @@ def cadastrarUsuario():
     senhaUser = request.form.get('senha')
     # Obtém o valor do campo 'confirmarSenha' do formulário enviado via POST.
     confirmaSenhaUser = request.form.get('confirmarSenha')
-    
+    fotoPerfil = request.files['fotoPerfil']
+    nome_fotoPerfil = fotoPerfil.filename
+    fotoPerfil.save(os.path.join(DIRETORIO_fotoPerfil, nome_fotoPerfil))
+    caminho_fotoPerfil = os.path.join(DIRETORIO_fotoPerfil, nome_fotoPerfil)
+
     # Impressão dos dados obtidos do formulário para verificação.
     print(nomeUser, cpfUser, emailUser, senhaUser, confirmaSenhaUser)
     
@@ -204,12 +210,12 @@ def cadastrarUsuario():
             
             # Define a consulta SQL para inserir um novo usuário na tabela 'usuario'.
             insert_query = """
-                INSERT INTO usuario (nome, email, senha, cpf)
-                VALUES (%s, %s, %s, %s)
+                INSERT INTO usuario (nome, email, senha, cpf, foto_perfil)
+                VALUES (%s, %s, %s, %s, %s)
             """
             
             # Executa a consulta SQL passando os dados do usuário como parâmetros.
-            cursor.execute(insert_query, (nomeUser, emailUser, senhaUser, cpfUser))
+            cursor.execute(insert_query, (nomeUser, emailUser, senhaUser, cpfUser, caminho_fotoPerfil))
             # Confirma as alterações no banco de dados.
             conn.commit()
             # Fecha o cursor para liberar recursos.
