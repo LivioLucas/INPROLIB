@@ -9,8 +9,11 @@ import os
 
 #AQUI DEFINIMOS O CAMINHO DO ARQUIVO QUE SERÁ SALVO
 #SERÁ NECESSARIO AJUSTAR CASO SEJA FEITO EM OUTRA MAQUINA
-DIRETORIO_upload = "C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\INPROLIB\\arquivos\\upload"
-DIRETORIO_fotoPerfil = "C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\INPROLIB\\arquivos\\fotoperfil"
+DIRETORIO_upload = "C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\arquivos\\upload"
+DIRETORIO_fotoPerfil = "C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\static\\img"
+diretorio_base = r"C:\Users\livio\Documents\GitHub\INPROLIB"
+
+
 
 
 app = Flask(__name__)
@@ -195,6 +198,8 @@ def cadastrarUsuario():
     nome_fotoPerfil = fotoPerfil.filename
     fotoPerfil.save(os.path.join(DIRETORIO_fotoPerfil, nome_fotoPerfil))
     caminho_fotoPerfil = os.path.join(DIRETORIO_fotoPerfil, nome_fotoPerfil)
+    caminho_relativo = os.path.relpath(caminho_fotoPerfil, start=diretorio_base)
+    caminho_salvar = "..\\" + caminho_relativo.replace("/", "\\")
 
     # Impressão dos dados obtidos do formulário para verificação.
     print(nomeUser, cpfUser, emailUser, senhaUser, confirmaSenhaUser)
@@ -215,7 +220,7 @@ def cadastrarUsuario():
             """
             
             # Executa a consulta SQL passando os dados do usuário como parâmetros.
-            cursor.execute(insert_query, (nomeUser, emailUser, senhaUser, cpfUser, caminho_fotoPerfil))
+            cursor.execute(insert_query, (nomeUser, emailUser, senhaUser, cpfUser, caminho_salvar))
             # Confirma as alterações no banco de dados.
             conn.commit()
             # Fecha o cursor para liberar recursos.
