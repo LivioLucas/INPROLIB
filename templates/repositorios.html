@@ -11,8 +11,10 @@
 <body>
     <div class="menu">
         <i class="fa-solid fa-bell" id="sino"></i>
-            <div class="photo-placeholder"></div>
-        <h3>User</h3>
+            <div class="photo-placeholder">
+                <img class="fotoUsuario" src="{{ imagem }}">
+            </div>
+        <h3 class="nomeUsuario">{{ nome }}</h3>
         <a href="/repositorios"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
             inventory_2
             </span>Repositórios</button></a>
@@ -22,10 +24,10 @@
         <a href="/cadInterno"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
             how_to_reg
             </span>Cadastro de Usuários</button></a>
-        <a href=""><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+        <a href="/publicacao_conteudo"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
             upload
             </span>Publicação de Conteúdos</button></a>
-        <a href="/h"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+        <a href="/"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
             feedback
             </span>Relatórios</button></a>
         <button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
