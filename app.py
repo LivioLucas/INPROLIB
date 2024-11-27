@@ -38,8 +38,22 @@ def repositorios():
 
 @app.route("/cadInterno")
 def cadInterno():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        pegar_autor= "SELECT nome FROM usuario"
+        cursor.execute(pegar_autor)
+        users = cursor.fetchall()  
+        cursor = conn.cursor()
+        pegar_cursos = "SELECT nome_curso FROM curso"
+        cursor.execute(pegar_cursos)
+        cursos = cursor.fetchall()
+        return render_template("cadInterno.html", cursos=cursos, users=users) 
+    except mariadb.Error as e:
+        print(f"Error connecting to MariaDB Platform: {e}")
+        return render_template('home.html')   
 # rota para a renderização da pagina de cadastro interno de usuários "cadInterno.html"
-    return render_template ("cadInterno.html")
+    
 
 
 @app.route("/cadastro")
@@ -49,8 +63,18 @@ def cadastro():
 
 @app.route("/cadcurso")
 def cadcurso():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        pegar_autor= "SELECT nome FROM usuario WHERE tipo = 'Professor'"
+        cursor.execute(pegar_autor)
+        users = cursor.fetchall()  
+        return render_template("cadcurso.html", users=users) 
+    except mariadb.Error as e:
+        print(f"Error connecting to MariaDB Platform: {e}")
+        return render_template('index.html') 
 # rota para a renderização da pagina de cadastro de cursos "cadcurso.html"
-    return render_template ("cadcurso.html")
+    
 
 @app.route("/formularioMandaSenha")
 def formularioSenha():
@@ -355,6 +379,76 @@ def upload_conteudo():
         # Renderiza a página 'index.html' em caso de erro.
         return render_template('repositorios.html')
     
+
+
+@app.route('/alterar_funcao', methods=['POST','GET'])
+def alterarfuncao():
+    usuario_professor = request.form.get('usuarioFuncProf')
+    curso_professor = request.form.get('cursoFuncProf')
+    try:
+        # Chama a função 'get_db_connection' para estabelecer uma conexão com o banco de dados.
+        conn = get_db_connection()
+        # Cria um cursor para executar comandos SQL no banco de dados.
+        cursor = conn.cursor()
+        # Define a consulta SQL para inserir um novo curso na tabela 'curso'.
+        update_query = "UPDATE usuario SET tipo = 'Professor' , curso_usuario= %s WHERE nome = %s;"  # Query para inserção de dados na tabela 'curso'.
+        
+        # Executa a consulta SQL passando os dados do curso como parâmetros.
+        cursor.execute(update_query, ( curso_professor, usuario_professor))
+        
+        # Confirma as alterações no banco de dados.
+        conn.commit()
+        # Fecha o cursor para liberar recursos.
+        cursor.close()
+        # Fecha a conexão com o banco de dados.
+        conn.close()
+        
+        # Mensagem de sucesso no console após o cadastro do curso.
+        print("funcionou!")
+        # Renderiza a página 'repositorios.html' após o cadastro bem-sucedido.
+        return render_template("cadInterno.html")
+    
+    except mariadb.Error as e:
+        # Captura e imprime qualquer erro que ocorra ao tentar conectar ao banco de dados.
+        print(f"Error connecting to MariaDB Platform: {e}")
+        # Renderiza a página 'cadcurso.html' em caso de erro no cadastro.
+        return render_template('cadcurso.html')
+    
+@app.route('/alterar_funcao_aluno', methods=['POST','GET'])
+def alterarfuncaoaluno():
+    usuario_aluno = request.form.get('usuarioFuncaluno')
+    curso_aluno = request.form.get('cursoFuncaluno')
+    try:
+        # Chama a função 'get_db_connection' para estabelecer uma conexão com o banco de dados.
+        conn = get_db_connection()
+        # Cria um cursor para executar comandos SQL no banco de dados.
+        cursor = conn.cursor()
+        # Define a consulta SQL para inserir um novo curso na tabela 'curso'.
+        update_query = "UPDATE usuario SET tipo = 'Aluno' , curso_usuario= %s WHERE nome = %s;"  # Query para inserção de dados na tabela 'curso'.
+        
+        # Executa a consulta SQL passando os dados do curso como parâmetros.
+        cursor.execute(update_query, ( curso_aluno, usuario_aluno))
+        
+        # Confirma as alterações no banco de dados.
+        conn.commit()
+        # Fecha o cursor para liberar recursos.
+        cursor.close()
+        # Fecha a conexão com o banco de dados.
+        conn.close()
+        
+        # Mensagem de sucesso no console após o cadastro do curso.
+        print("funcionou!")
+        # Renderiza a página 'repositorios.html' após o cadastro bem-sucedido.
+        return render_template("cadInterno.html")
+    
+    except mariadb.Error as e:
+        # Captura e imprime qualquer erro que ocorra ao tentar conectar ao banco de dados.
+        print(f"Error connecting to MariaDB Platform: {e}")
+        # Renderiza a página 'cadcurso.html' em caso de erro no cadastro.
+        return render_template('cadcurso.html')
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)    

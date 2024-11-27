@@ -25,10 +25,10 @@
         </a>
         <a href="/cadInterno">
             <button class="dropdown-btn bot2" style="font-size: 16px;">
-                <span class="material-symbols-outlined" id="simb">how_to_reg</span>Cadastro de Usuários
+                <span class="material-symbols-outlined" id="simb">how_to_reg</span>Vinculação de Funções
             </button>
         </a>
-        <a href="">
+        <a href="/publicacao_conteudo">
             <button class="dropdown-btn bot2" style="font-size: 16px;">
                 <span class="material-symbols-outlined" id="simb">upload</span>Publicação de Conteúdos
             </button>
@@ -87,7 +87,13 @@
                   <th><label for="">Coordenador</label></td>
                 </tr>
                 <tr>
-                  <td><input type="text" name='coordenadorCurso' placeholder="Nomeie o Coordenador do Curso"></td>
+                <td>
+                    <select name="coordenadorCurso" class="input-normal">
+                        {% for user in users %}
+                        <option value="{{ user[0] }}" selected>{{ user[0] }}</option>                                
+                        {% endfor %}
+                    </select>
+                </td>
                 </tr>
               </table>
             </div>
