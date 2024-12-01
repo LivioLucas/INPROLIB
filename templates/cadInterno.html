@@ -18,9 +18,9 @@
             <span class="material-symbols-outlined" id="simb">inventory_2</span>Repositórios</button></a>
         <a href="/cadcurso"><button class="dropdown-btn bot2" style="font-size: 16px;">
             <span class="material-symbols-outlined" id="simb">post_add</span>Cadastro de Cursos</button></a>
-        <a href="/cadInterno"><button class="dropdown-btn bot2" style="font-size: 16px;">
-            <span class="material-symbols-outlined" id="simb">how_to_reg</span>Vinculação de Funções</button></a>
-        <a href="/publicacao_conteudo"><button class="dropdown-btn bot2" style="font-size: 16px;">
+        <a href=""><button class="dropdown-btn bot2" style="font-size: 16px;">
+            <span class="material-symbols-outlined" id="simb">how_to_reg</span>Cadastro de Usuários</button></a>
+        <a href=""><button class="dropdown-btn bot2" style="font-size: 16px;">
             <span class="material-symbols-outlined" id="simb">upload</span>Publicação de Conteúdos</button></a>
         <a href="/h"><button class="dropdown-btn bot2" style="font-size: 16px;">
             <span class="material-symbols-outlined" id="simb">feedback</span>Relatórios</button></a>
@@ -33,46 +33,58 @@
         </div>
     </div>
     <div class="content">
-        <h1>Vinculação de Funções</h1>
+        <h1>Cadastro de Usuários</h1>
         <div class="input-container">
         </div>
         <div class="input-container">
             <div class="input-column">
-            <form action="/alterar_funcao" method="POST">
                 <input type="text" value="Professores" disabled class="disabled-input">
-                <label>Nome do Usuário</label>
-                <select name="usuarioFuncProf" class="input-normal">
-                    {% for user in users %}
-                    <option value="{{ user[0] }}" selected>{{ user[0] }}</option>                                
-                    {% endfor %}
+                <label>Nome do Professor</label>
+                <input type="text" placeholder="Insira o nome do Professor" class="input-normal">
+                <label>Matrícula do Professor</label>
+                <input type="text" placeholder="Insira a matrícula" class="input-normal">
+                <label>Email do Professor</label>
+                <input type="email" placeholder="Insira o Email" class="input-normal">
+                <label>Telefone do Professor</label>
+                <input type="tel" placeholder="Insira o Telefone" class="input-normal" oninput="maskTelefone(this)">
+                <label>Disciplina</label>
+                <select class="input-normal">
+                    <option value="" disabled selected>Selecionar Disciplina</option>
+                    <option value="Algoritmos e Estruturas de Dados">Algoritmos e Estruturas de Dados</option>
+                    <option value="Dermatologia Estética">Dermatologia Estética</option>
+                    <option value="Biologia Molecular">Biologia Molecular</option>
+                    <option value="Controladoria">Controladoria</option>
                 </select>
-                <label>Nome do Curso</label>
-                <select name="cursoFuncProf" class="input-normal">
-                    {% for curso in cursos %}
-                    <option value="{{ curso[0] }}" selected>{{ curso[0] }}</option>                                
-                    {% endfor %}
+                <label>Curso</label>
+                <select class="input-normal">
+                    <option value="" disabled selected>Selecionar Curso</option>
+                    <option value="curso1">Análise e Desenvolvimento de Sistemas</option>
+                    <option value="curso2">Estética e Cosmética</option>
+                    <option value="curso3">Biomedicina</option>
+                    <option value="curso4">Contabilidade</option>
                 </select>
                 
-                <button type="submit" class="save-button">Salvar</button>
-            </form>
+                <button class="save-button">Salvar</button>
             </div>
             <div class="input-column">
-                <form action="/alterar_funcao_aluno" method="POST">
                 <input type="text" value="Alunos" disabled class="disabled-input">
-                <label>Nome do Usuário</label>
-                <select name="usuarioFuncaluno" class="input-normal">
-                    {% for user in users %}
-                    <option value="{{ user[0] }}" selected>{{ user[0] }}</option>                                
-                    {% endfor %}
+                <label>Nome do Aluno</label>
+                <input type="text" placeholder="Insira o nome do Aluno" class="input-normal">
+                <label>Matrícula do Aluno</label>
+                <input type="text" placeholder="Insira a matrícula" class="input-normal">
+                <label>Email do Aluno</label>
+                <input type="email" placeholder="Insira o Email" class="input-normal">
+                <label>Telefone do Aluno</label>
+                <input type="tel" placeholder="Insira o Telefone" class="input-normal" oninput="maskTelefone(this)">
+                <label>Curso</label>
+                <select class="input-normal">
+                    <option value="" disabled selected>Selecionar Curso</option>
+                    <option value="curso1">Análise e Desenvolvimento de Sistemas</option>
+                    <option value="curso2">Estética e Cosmética</option>
+                    <option value="curso3">Biomedicina</option>
+                    <option value="curso4">Contabilidade</option>
                 </select>
-                <label>Nome do Curso</label>
-                <select name="cursoFuncaluno" class="input-normal">
-                    {% for curso in cursos %}
-                    <option value="{{ curso[0] }}" selected>{{ curso[0] }}</option>                                
-                    {% endfor %}
-                </select>
-                <button type="submit" class="save-button">Salvar</button>
-            </form>
+                <button class="save-button">Salvar</button>
             </div>
         </div>
     </div>
