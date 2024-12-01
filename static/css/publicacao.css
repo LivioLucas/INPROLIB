@@ -267,7 +267,7 @@ input, select {
 }
 
 .file-upload {
-    margin-top: 50px;
+    margin-top: 40px;
     position: relative;
     display: inline-block;
     width: 300px;
@@ -315,7 +315,7 @@ input, select {
 }
 
 .publicar-btn {
-    margin-top: 80px;
+    margin-top: 40px;
     margin-left: 36%;
     padding: 10px 20px;
     font-size: 16px;
@@ -330,3 +330,18 @@ input, select {
 .publicar-btn:hover {
     background-color: #198754;
 }
+
+input[type=checkbox]{
+    width: 15px;
+}
+
+.termos{
+    display: block;
+    margin-top: 15px;
+}
+
+#submitBtn:disabled {
+    background-color: #648174;
+    color: #d6d6d6;
+    cursor: not-allowed;
+  }
