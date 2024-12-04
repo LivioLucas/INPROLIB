@@ -55,13 +55,13 @@ def index():
 #este método faz com que a página inicial do projeto seja o "login.html"
     return render_template ("index.html")
 
-@app.route("/repositorios")
+@app.route("/repositorios", methods=['GET', 'POST'])
 def repositorios():
     dados_usuario_logado = carregarInfoLogin()
 # rota para renderização da pagina de repositórios "repositorios.html"
     return render_template ("repositorios.html", dados_usuario_logado=dados_usuario_logado)
 
-@app.route("/cadInterno")
+@app.route("/cadInterno", methods=['GET', 'POST'])
 def cadInterno():
     dados_usuario_logado = carregarInfoLogin()
     try:
@@ -88,7 +88,7 @@ def cadastro():
 # rota para a renderização da pagina de cadastro externo de usuários para que possam fazer login "cadastro.html"
     return render_template ("cadastro.html", dados_usuario_logado=dados_usuario_logado)
 
-@app.route("/cadcurso")
+@app.route("/cadcurso" ,methods=['GET', 'POST'])
 def cadcurso():
     dados_usuario_logado = carregarInfoLogin()
     try:
@@ -223,6 +223,7 @@ def cadastrarCurso():
         
         # Confirma as alterações no banco de dados.
         conn.commit()
+        dados_usuario_logado = carregarInfoLogin()
         # Fecha o cursor para liberar recursos.
         cursor.close()
         # Fecha a conexão com o banco de dados.
@@ -231,7 +232,7 @@ def cadastrarCurso():
         # Mensagem de sucesso no console após o cadastro do curso.
         print("curso cadastrado!")
         # Renderiza a página 'repositorios.html' após o cadastro bem-sucedido.
-        return render_template("repositorios.html")
+        return render_template("repositorios.html", dados_usuario_logado=dados_usuario_logado)
     
     except mariadb.Error as e:
         # Captura e imprime qualquer erro que ocorra ao tentar conectar ao banco de dados.
@@ -399,6 +400,7 @@ def upload_conteudo():
 
         # Comita as alterações e fecha a conexão
         conn.commit()
+        dados_usuario_logado = carregarInfoLogin()
         cursor.close()
         conn.close()
 
@@ -406,7 +408,7 @@ def upload_conteudo():
 
         
 
-        return render_template('repositorios.html')
+        return render_template('repositorios.html', dados_usuario_logado=dados_usuario_logado)
     
     except mariadb.Error as e:
         # Captura e imprime qualquer erro que ocorra ao tentar conectar ao banco de dados.
@@ -433,6 +435,7 @@ def alterarfuncao():
         
         # Confirma as alterações no banco de dados.
         conn.commit()
+        dados_usuario_logado = carregarInfoLogin()
         # Fecha o cursor para liberar recursos.
         cursor.close()
         # Fecha a conexão com o banco de dados.
@@ -441,7 +444,7 @@ def alterarfuncao():
         # Mensagem de sucesso no console após o cadastro do curso.
         print("funcionou!")
         # Renderiza a página 'repositorios.html' após o cadastro bem-sucedido.
-        return render_template("cadInterno.html")
+        return render_template("cadInterno.html", dados_usuario_logado=dados_usuario_logado)
     
     except mariadb.Error as e:
         # Captura e imprime qualquer erro que ocorra ao tentar conectar ao banco de dados.
@@ -466,6 +469,7 @@ def alterarfuncaoaluno():
         
         # Confirma as alterações no banco de dados.
         conn.commit()
+        dados_usuario_logado = carregarInfoLogin()
         # Fecha o cursor para liberar recursos.
         cursor.close()
         # Fecha a conexão com o banco de dados.
@@ -474,7 +478,7 @@ def alterarfuncaoaluno():
         # Mensagem de sucesso no console após o cadastro do curso.
         print("funcionou!")
         # Renderiza a página 'repositorios.html' após o cadastro bem-sucedido.
-        return render_template("cadInterno.html")
+        return render_template("cadInterno.html", dados_usuario_logado=dados_usuario_logado)
     
     except mariadb.Error as e:
         # Captura e imprime qualquer erro que ocorra ao tentar conectar ao banco de dados.
