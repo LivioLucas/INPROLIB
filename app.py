@@ -32,11 +32,11 @@ def carregarInfoLogin():
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        pegar_autor= "SELECT nome_usuario FROM audit_login"
+        pegar_autor= "SELECT nome_usuario FROM audit_login ORDER BY id_audit DESC LIMIT 1"
         cursor.execute(pegar_autor)
         usuario_logado = cursor.fetchone()[0]  
         cursor = conn.cursor()
-        pegar_cursos = "SELECT imagem_usuario FROM audit_login"
+        pegar_cursos = "SELECT imagem_usuario FROM audit_login ORDER BY id_audit DESC LIMIT 1"
         cursor.execute(pegar_cursos)
         imagem_perfil = cursor.fetchone()[0]
         cursor.close()
@@ -137,6 +137,7 @@ def checkar_login():
     login = request.form.get('login')
     # Obtém o valor do campo 'password' do formulário enviado via POST.
     password = request.form.get('password')
+    dados_usuario_logado = carregarInfoLogin()
 
     # Tentativa de conectar ao banco de dados e realizar a verificação do login.
     try:
@@ -170,7 +171,7 @@ def checkar_login():
         if result:
             print("login funcionou")  # Mensagem de sucesso no console.
             # Renderiza a página 'repositorios.html' em caso de login bem-sucedido.
-            return render_template('repositorios.html',imagem = imagem, nome = nome)
+            return render_template('repositorios.html', dados_usuario_logado=dados_usuario_logado)
         else:
             print("login não funcionou, mas mesmo assim conectou no BD")  # Mensagem de falha no login.
             # Renderiza a página 'index.html' em caso de falha no login.

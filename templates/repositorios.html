@@ -11,10 +11,10 @@
 <body>
     <div class="menu">
         <i class="fa-solid fa-bell" id="sino"></i>
-            <div class="photo-placeholder">
-                <img class="fotoUsuario" src="{{ imagem }}">
-            </div>
-        <h3 class="nomeUsuario">{{ nome }}</h3>
+        <div class="photo-placeholder">
+            <img class="fotoUsuario" src="{{ dados_usuario_logado.imagem_perfil }}">
+        </div>
+        <h3 class="nomeUsuario">{{ dados_usuario_logado.usuario_logado }}</h3>
         <a href="/repositorios"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
             inventory_2
             </span>Repositórios</button></a>
