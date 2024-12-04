@@ -14,6 +14,17 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- Copiando estrutura para tabela inprolib_schema.audit_login
+CREATE TABLE IF NOT EXISTS `audit_login` (
+  `id_audit` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_usuario` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `imagem_usuario` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ultimo_login` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_audit`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+
+-- Exportação de dados foi desmarcado.
+
 -- Copiando estrutura para tabela inprolib_schema.curso
 CREATE TABLE IF NOT EXISTS `curso` (
   `id_curso` int(11) NOT NULL AUTO_INCREMENT,
