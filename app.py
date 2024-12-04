@@ -16,6 +16,7 @@ diretorio_base = r"C:\Users\livio\Documents\GitHub\INPROLIB"
 
 
 
+
 app = Flask(__name__)
 #CONFIGURAÇÀO PARA FUNÇÃO DE ENVIO DE EMAIL NO BOTÃO ESQUECI MINHA SENHA
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -25,6 +26,29 @@ app.config['MAIL_PASSWORD'] = 'chew suix ehhy sayn'#Facinproprojetointegrador3
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
+
+
+def carregarInfoLogin():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        pegar_autor= "SELECT nome_usuario FROM audit_login"
+        cursor.execute(pegar_autor)
+        usuario_logado = cursor.fetchone()[0]  
+        cursor = conn.cursor()
+        pegar_cursos = "SELECT imagem_usuario FROM audit_login"
+        cursor.execute(pegar_cursos)
+        imagem_perfil = cursor.fetchone()[0]
+        cursor.close()
+        conn.close()
+        return {
+        "usuario_logado": usuario_logado,
+        "imagem_perfil": imagem_perfil
+        }
+    except mariadb.Error as e:
+        print(f"Error connecting to MariaDB Platform: {e}")
+        return render_template('home.html')   
+
 #aqui temos módulos para renderizar página, para navegação.
 @app.route("/")
 def index(): 
@@ -33,11 +57,13 @@ def index():
 
 @app.route("/repositorios")
 def repositorios():
+    dados_usuario_logado = carregarInfoLogin()
 # rota para renderização da pagina de repositórios "repositorios.html"
-    return render_template ("repositorios.html")
+    return render_template ("repositorios.html", dados_usuario_logado=dados_usuario_logado)
 
 @app.route("/cadInterno")
 def cadInterno():
+    dados_usuario_logado = carregarInfoLogin()
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -48,7 +74,7 @@ def cadInterno():
         pegar_cursos = "SELECT nome_curso FROM curso"
         cursor.execute(pegar_cursos)
         cursos = cursor.fetchall()
-        return render_template("cadInterno.html", cursos=cursos, users=users) 
+        return render_template("cadInterno.html", cursos=cursos, users=users,dados_usuario_logado=dados_usuario_logado) 
     except mariadb.Error as e:
         print(f"Error connecting to MariaDB Platform: {e}")
         return render_template('home.html')   
@@ -58,18 +84,20 @@ def cadInterno():
 
 @app.route("/cadastro")
 def cadastro():
+    dados_usuario_logado = carregarInfoLogin()
 # rota para a renderização da pagina de cadastro externo de usuários para que possam fazer login "cadastro.html"
-    return render_template ("cadastro.html")
+    return render_template ("cadastro.html", dados_usuario_logado=dados_usuario_logado)
 
 @app.route("/cadcurso")
 def cadcurso():
+    dados_usuario_logado = carregarInfoLogin()
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
         pegar_autor= "SELECT nome FROM usuario WHERE tipo = 'Professor'"
         cursor.execute(pegar_autor)
         users = cursor.fetchall()  
-        return render_template("cadcurso.html", users=users) 
+        return render_template("cadcurso.html", users=users, dados_usuario_logado=dados_usuario_logado) 
     except mariadb.Error as e:
         print(f"Error connecting to MariaDB Platform: {e}")
         return render_template('index.html') 
@@ -83,6 +111,7 @@ def formularioSenha():
 
 @app.route("/publicacao_conteudo")
 def publicacao_conteudo():
+    dados_usuario_logado = carregarInfoLogin()
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -93,7 +122,7 @@ def publicacao_conteudo():
         pegar_cursos = "SELECT nome_curso FROM curso"
         cursor.execute(pegar_cursos)
         cursos = cursor.fetchall()    
-        return render_template("publicacao.html", cursos=cursos, autores=autores) 
+        return render_template("publicacao.html", cursos=cursos, autores=autores, dados_usuario_logado=dados_usuario_logado) 
     except mariadb.Error as e:
         print(f"Error connecting to MariaDB Platform: {e}")
         return render_template('home.html')    
@@ -126,8 +155,12 @@ def checkar_login():
         imagem = cursor.fetchone()[0]
         query3 = "SELECT nome FROM usuario WHERE email = %s"
         cursor.execute(query3, (login,))
-        nome = cursor.fetchone()[0]        
-        print(imagem)  
+        nome = cursor.fetchone()[0]   
+        print(nome) 
+        query_audit = "INSERT INTO audit_login (nome_usuario, imagem_usuario, ultimo_login) VALUES (%s, %s, %s)"
+        data_login = datetime.now()
+        cursor.execute(query_audit, (nome, imagem, data_login))   
+        conn.commit() 
         # Fecha o cursor para liberar recursos.
         cursor.close()
         # Fecha a conexão com o banco de dados.
