@@ -137,7 +137,7 @@ def checkar_login():
     login = request.form.get('login')
     # Obtém o valor do campo 'password' do formulário enviado via POST.
     password = request.form.get('password')
-    dados_usuario_logado = carregarInfoLogin()
+    
 
     # Tentativa de conectar ao banco de dados e realizar a verificação do login.
     try:
@@ -162,6 +162,7 @@ def checkar_login():
         data_login = datetime.now()
         cursor.execute(query_audit, (nome, imagem, data_login))   
         conn.commit() 
+        dados_usuario_logado = carregarInfoLogin()
         # Fecha o cursor para liberar recursos.
         cursor.close()
         # Fecha a conexão com o banco de dados.
