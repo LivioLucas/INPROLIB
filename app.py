@@ -421,8 +421,8 @@ def upload_conteudo():
 
         # Insere os dados na tabela publicacao
         cursor.execute(
-           "INSERT INTO publicacao (titulo, arquivo, data_publicacao, id_autor, id_curso, tipo, nome_arquivo, assuntos_relacionados, data_autoria) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
-           (nome_do_conteudo, caminho_do_conteudo, timestamp_atual, id_usuario, id_curso, tipoArquivo, nome_arquivo, assunto_publicacao, ano_autoria)
+        "INSERT INTO publicacao (titulo, arquivo, data_publicacao, id_autor, id_curso, tipo, nome_arquivo, assuntos_relacionados, data_autoria) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+        (nome_do_conteudo, caminho_do_conteudo, timestamp_atual, id_usuario, id_curso, tipoArquivo, nome_arquivo, assunto_publicacao, ano_autoria)
         )
 
         # Comita as alterações e fecha a conexão
