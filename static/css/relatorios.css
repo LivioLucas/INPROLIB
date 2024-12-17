@@ -1,0 +1,330 @@
+:root {
+    /*Todas as Cores a serem usadas*/
+    --bs-blue: #00002D;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffd454;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    /*Cores Principais do Site*/
+    --bs-primary: #0046E1;
+    --bs-secondary: #00002D;
+    --bs-terceary: #6c757d;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    /* Variações da cor principal */
+    --bs-primary-light-1: #3369E8;  
+    --bs-primary-light-2: #668BF0;  
+    --bs-primary-light-3: #99ACF7;  
+    --bs-primary-light-4: #CCD4FF;  
+    --bs-primary-dark-1: #003ABB;   
+    --bs-primary-dark-2: #002C94;   
+    --bs-primary-dark-3: #001E6E;   
+    --bs-primary-dark-4: #001048;  
+    /*Cores RGB*/
+    --bs-primary-rgb: 0, 0, 45;
+    --bs-secondary-rgb: 108, 117, 125;
+    --bs-success-rgb: 25, 135, 84;
+    --bs-info-rgb: 13, 202, 240;
+    --bs-warning-rgb: 255, 193, 7;
+    --bs-danger-rgb: 220, 53, 69;
+    --bs-light-rgb: 248, 249, 250;
+    --bs-dark-rgb: 33, 37, 41;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 33, 37, 41;
+    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #212529;
+    --bs-body-dark-color: var(--bs-white);
+    --bs-body-bg: #fff;
+    --bs-font-color: var(--bs-white);
+}
+
+body{
+    font-family: sans-serif;
+    background-color: var(--bs-body-bg);
+}
+
+/* Informações de menu */
+
+.menu {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--bs-primary);
+    overflow-x: hidden;
+    padding-top: 20px;
+    font-family: sans-serif;
+
+    background-image: url(/static/images/LOGO_AZUL_ESQUERDO\ -\ SEM\ FUNDO.png);
+    background-size: 300px auto;;
+    background-repeat: no-repeat;
+    background-position: -25% 125%;
+
+    scrollbar-color: var(--bs-primary-light-2) var(--bs-primary-dark-2); 
+    scrollbar-width: thin;
+}
+
+.photo-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: auto;
+    background-color: aliceblue;
+
+    background-size: cover; /* Faz a imagem cobrir toda a div */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+h3{
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    color: var(--bs-font-color);
+}
+
+h2{
+    font-size: 26px;
+    color: var(--bs-body-color);
+    margin-left: 20px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+h1{
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+/* p{
+    font-size: 14px;
+} */
+
+i{
+    margin-right: 5px;
+}
+#sino{
+    font-size: 20px;
+    color: var(--bs-font-color);
+    margin-left: 20px;
+}
+
+/* Botões */
+
+.dropdown-btn, .bot{
+    padding: 10px 20px;
+    width: 100%;
+    background-color: inherit;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+    color: var(--bs-font-color);
+    font-family: sans-serif;
+    border: none;
+}
+.bot{
+    border-left: 4px solid var(--bs-font-color);
+}
+
+.dropdown-btn:hover, .bot:hover{
+    background-color: var(--bs-primary-light-1);
+}
+
+.menu .dropdown-container {
+    display: none;
+    padding-left: 20px;
+}
+
+.menu .dropdown-container a {
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+    color: var(--bs-font-color);
+}
+
+.menu .dropdown-container a:hover{
+    background-color: var(--bs-primary-light-2);
+}
+
+.cascata{
+    border: none;
+    border-left: 2px solid --bs-font-color;
+    margin-left: 8px;
+}
+
+#toggleMode:hover{
+    cursor: pointer;
+}
+
+/* Ícones */
+
+span{
+    position: relative;
+    top:4px;
+    margin-right: 2px;
+}
+
+#simb{
+    line-height: 0px;
+}
+
+/* Logo e Título */
+
+.content {
+    margin-left: 24%;
+    padding: 20px;
+}
+
+.tabela-trabalhos {
+    width: 98%;
+    margin: 50px 0px;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px; 
+    overflow: hidden; 
+}
+
+.tabela-trabalhos tbody{
+    color: var(--bs-dark);
+}
+
+.tabela-trabalhos th, .tabela-trabalhos td {
+    padding: 10px;
+    text-align: left;
+    border: none;
+}
+
+.tabela-trabalhos th {
+    background-color: var(--bs-primary);
+    color: white;
+}
+
+.tabela-trabalhos tr:nth-child(even) {
+    background-color: var(--bs-primary-light-3);
+}
+
+.tabela-trabalhos tr:nth-child(odd) {
+    background-color: var(--bs-primary-light-4);
+}
+
+.but{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    background-color: var(--bs-warning);
+    border-radius: 5px;
+    border: 1px solid var(--bs-body-color);
+    padding: 5px;
+}
+
+button:hover{
+    background-color: var(--bs-yellow);
+    cursor: pointer;
+}
+
+.campos select, .campos input{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 200px;
+}
+
+.menu-btn{
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+}
+
+@media screen and (max-width: 736px) {
+    body{
+        margin: 0px;
+        font-size: 14px;
+        overflow-x: hidden;
+    }
+    .menu {
+        width: 100%; /* Aumenta a largura do menu para ocupar 100% da tela */
+        height: auto; /* Ajusta a altura do menu para caber no conteúdo */
+        position: relative; /* Permite que o menu se mova com o conteúdo */
+    }
+    .content{
+        margin: 0px;
+    }
+    .photo-placeholder{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin: 0px 0px 0px 10px;
+        background-color: aliceblue;
+    
+        background-size: cover; /* Faz a imagem cobrir toda a div */
+        background-position: center; /* Centraliza a imagem */
+        background-repeat: no-repeat; /* Evita que a imagem se repita */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    }
+    #sino{
+        display: none;
+    }
+    h3{
+        margin: 15px;
+        justify-content: start;
+    }
+    .botoes{
+        display: none;
+    }
+    .botoes.active{
+        display: block;
+    }
+    .menu-btn{
+        display: inline-block;
+        position: relative;
+        left: 90%;
+        bottom: 105px;
+    }
+
+    .campos select, .campos input{
+        margin-right: 5px;
+        margin-bottom: 5px;
+        padding: 5px;
+        width: 150px;
+    }
+    input::-webkit-input-placeholder {
+        font-size: 12px; 
+    }
+}

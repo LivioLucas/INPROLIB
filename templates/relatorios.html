@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INPROLIB RELATORIO</title>
+    <link rel="stylesheet" href="../static/css/relatorios.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="menu">
+        <i class="fa-solid fa-bell" id="sino"></i>
+            <div class="photo-placeholder"></div>
+        <h3>User</h3>
+        <div class="menu-btn">
+            <!-- Ícone de três barras -->
+            <span class="menu-icon">&#9776;</span>
+        </div>
+        <div class="botoes">
+            <a href="/repositorios"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+                inventory_2
+                </span>Repositórios</button></a>
+            <a href="/"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+                post_add
+                </span>Cadastro de Cursos</button></a>
+            <a href=""><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+                how_to_reg
+                </span>Cadastro de Usuários</button></a>
+            <a href=""><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+                upload
+                </span>Publicação de Conteúdos</button></a>
+            <a href="/h"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+                feedback
+                </span>Relatórios</button></a>
+            <button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+                settings</span>Opções</a></button>
+            <div class="dropdown-container">
+                <a class="cascata" href="/"><span class="material-symbols-outlined" id="simb">
+                    logout</span>Sair</a>
+                <a class="cascata" href="/"><span class="material-symbols-outlined" id="simb">
+                    unfold_more</span>Trocar função</a>
+                <a class="cascata" id="toggleMode"><span class="material-symbols-outlined" id="simb">
+                    routine</span>Modo Noturno</a>
+            </div>
+        </div>
+    </div>
+<div class="content">
+    <h1>Relatórios</h1>
+    <p></p>
+    <table class="campos">
+          <tr>
+            <td><label for="curso">Curso</label></td>
+            <td><label for="autor">Autor</label></td>
+          </tr>
+          <tr>
+            <td><select name="curso" id="curso">
+                {% for curso in cursos %}
+                    <option value="{{ curso[1] }}" selected>{{ curso[0] }}</option>                                
+                {% endfor %}
+            </select></td>
+            <td><select name="autor" id="autor">
+                {% for user in users %}
+                    <option value="{{ user[1] }}" selected>{{ user[0] }}</option>                                
+                {% endfor %}
+            </select></td>
+          </tr>
+          <tr>
+            <td><label for="tipo">Tipo de documento</label> </td>
+            <td><label for="data_inicial">Data Inicial</label></td>
+          </tr>
+          <tr>
+            <td><select name="tipo" id="tipo">{% for tipo in tipos %}
+                <option value="{{ tipo[0] }}" selected>{{ tipo[0] }}</option>                                
+                {% endfor %}</select>
+            </td>
+            <td><input type="date" name="data_inicial" id="data_inicial"></td>
+          </tr>
+          <tr>
+            <td><label for="data_final">Data Final</label></td>
+          </tr>
+          <tr>
+            <td><input type="date" name="data_final" id="data_final"></td>
+          </tr>
+    </table>
+    <button id="aplica_filtro">Aplicar Filtros</button>
+    <table class="tabela-trabalhos">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Tipo</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox">Gestão Financeira em Pequenos Negócios</td>
+                <td>Aluno Y</td>
+                <td>TCC</td>
+                <td>01/01/2019</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox">Avaliação e Depreciação de Ativos</td>
+                <td>Professor X</td>
+                <td>TCC</td>
+                <td>22/05/2019</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox">Gestão de Obrigações e Financiamentos</td>
+                <td>Aluno Z</td>
+                <td>TCC</td>
+                <td>02/06/2020</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox">Análise e Interpretação de Balanços Patrimoniais</td>
+                <td>Aluno B</td>
+                <td>TCC</td>
+                <td>07/06/2020</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox">Gestão Financeira em Pequenos Negócios</td>
+                <td>Aluno Y</td>
+                <td>TCC</td>
+                <td>08/09/2022</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<script src="../static/js/relatorios.js"></script>
+</body>
+</html>

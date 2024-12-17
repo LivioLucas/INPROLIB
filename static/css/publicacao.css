@@ -1,0 +1,347 @@
+:root {
+    /*Todas as Cores a serem usadas*/
+    --bs-blue: #00002D;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    
+    /*Cores Principais do Site*/
+    --bs-primary: #0046E1;
+    --bs-secondary: #00002D;
+    --bs-terceary: #6c757d;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+
+    /* Variações da cor principal */
+    --bs-primary-light-1: #3369E8;
+    --bs-primary-light-2: #668BF0;
+    --bs-primary-light-3: #99ACF7;
+    --bs-primary-light-4: #CCD4FF;
+    --bs-primary-dark-1: #003ABB;
+    --bs-primary-dark-2: #002C94;
+    --bs-primary-dark-3: #001E6E;
+    --bs-primary-dark-4: #001048;
+
+    /*Cores RGB*/
+    --bs-primary-rgb: 0, 0, 45;
+    --bs-secondary-rgb: 108, 117, 125;
+    --bs-success-rgb: 25, 135, 84;
+    --bs-info-rgb: 13, 202, 240;
+    --bs-warning-rgb: 255, 193, 7;
+    --bs-danger-rgb: 220, 53, 69;
+    --bs-light-rgb: 248, 249, 250;
+    --bs-dark-rgb: 33, 37, 41;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 33, 37, 41;
+    --bs-body-bg-rgb: 255, 255, 255;
+
+    /* Fontes */
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #212529;
+    --bs-body-bg: #fff;
+    --bs-font-color: var(--bs-white);
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--bs-body-bg);
+}
+.menu {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--bs-primary);
+    overflow-x: hidden;
+    padding-top: 20px;
+    font-family: sans-serif;
+    background-image: url(LOGO\ BRANCO\ ESQUERDO\ -\ SEM\ FUNDO.png);
+    background-size: 300px auto;
+    background-repeat: no-repeat;
+    background-position: -25% 125%;
+    scrollbar-color: var(--bs-primary-light-2) var(--bs-primary-dark-2);
+    scrollbar-width: thin;
+
+}
+.content {
+    margin-left: 22%;
+    padding: 20px;
+}
+
+.form-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap; 
+}
+
+.form-col {
+    flex: 1 1 300px; 
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .form-container {
+        flex-direction: column; 
+    }
+
+    .form-col {
+        width: 100%;
+    }
+
+    .file-upload {
+        width: 100%; 
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em; 
+    }
+
+    .file-upload .icon {
+        font-size: 36px; 
+    }
+
+    .file-upload .text {
+        font-size: 12px; 
+    }
+}
+
+.photo-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: auto;
+    background-color: aliceblue;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    color: var(--bs-font-color);
+}
+
+i {
+    margin-right: 5px;
+}
+
+#sino {
+    font-size: 20px;
+    color: var(--bs-font-color);
+    margin-left: 20px;
+}
+
+/* Botões */
+.dropdown-btn, .bot {
+    padding: 10px 20px;
+    width: 100%;
+    background-color: inherit;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+    color: var(--bs-font-color);
+    font-family: sans-serif;
+    border: none;
+}
+
+.bot {
+    border-left: 4px solid var(--bs-font-color);
+}
+
+.dropdown-btn:hover, .bot:hover {
+    background-color: var(--bs-primary-light-1);
+}
+
+.menu .dropdown-container {
+    display: none;
+    padding-left: 20px;
+}
+
+.menu .dropdown-container a {
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+    color: var(--bs-font-color);
+}
+
+.menu .dropdown-container a:hover {
+    background-color: var(--bs-primary-light-2);
+}
+
+.cascata {
+    border: none;
+    border-left: 2px solid var(--bs-font-color);
+    margin-left: 8px;
+}
+
+#toggleMode:hover {
+    cursor: pointer;
+}
+span {
+    position: relative;
+    top: 4px;
+    margin-right: 2px;
+}
+
+#simb {
+    line-height: 0px;
+}
+.content {
+    margin-left: 22%;
+    padding: 20px;
+}
+
+h1 {
+    display: inline-block;
+    font-size: 2.50em;
+}
+.form-container {
+    display: flex;
+    gap: 40px;
+}
+
+.form-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+label {
+    font-weight: bold;
+    margin-top: 17px;
+}
+
+input, select {
+    margin-top: 5px;
+    padding: 4px;
+    font-size: 1rem;
+    border: 1px solid var(--bs-gray-400);
+    border-radius: 3px;
+    width: 60%;
+}
+
+.file-upload {
+    margin-top: 40px;
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 100px;
+    background-color: var(--bs-primary-light-1);
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid var(--bs-body-color);
+}
+
+.file-upload input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-upload .icon {
+    font-size: 42px;
+    margin-top: 15px;
+}
+
+.file-upload .text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    font-size: 14px;
+    top: 75px;
+}
+
+.alinha{
+    width: 82%;
+    display: flex;
+    justify-content: center;
+}
+
+.publicar-btn {
+    margin-top: 40px;
+    margin-left: 36%;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #20c958;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.publicar-btn:hover {
+    background-color: #198754;
+}
+
+input[type=checkbox]{
+    width: 15px;
+}
+
+.termos{
+    display: block;
+    margin-top: 15px;
+}
+
+#submitBtn:disabled {
+    background-color: #648174;
+    color: #d6d6d6;
+    cursor: not-allowed;
+  }

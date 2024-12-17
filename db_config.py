@@ -4,7 +4,8 @@ conn_params= {
 "user" : "root",
 "password" : "root",
 "host" : "localhost",
-"database" : "inprolib_schema"
+"database" : "inprolib_schema",
+"port" : 3310
 }
 
 def get_db_connection():
