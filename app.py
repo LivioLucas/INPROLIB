@@ -57,15 +57,36 @@ def index():
 
 @app.route("/repositorios", methods=['GET', 'POST'])
 def repositorios():
+    
     dados_usuario_logado = carregarInfoLogin()
 # rota para renderização da pagina de repositórios "repositorios.html"
     return render_template ("repositorios.html", dados_usuario_logado=dados_usuario_logado)
 
 @app.route("/relatorio", methods=['GET', 'POST'])
 def relatorios():
-    dados_usuario_logado = carregarInfoLogin()
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        pegar_autor= "SELECT nome, id_usuario FROM usuario"
+        cursor.execute(pegar_autor)
+        users = cursor.fetchall()  
+        cursor = conn.cursor()
+        pegar_cursos = "SELECT nome_curso, id_curso FROM curso"
+        cursor.execute(pegar_cursos)
+        cursos = cursor.fetchall()
+        print(cursos)
+        pegar_tipos = "SELECT nome_tipo, id FROM tipos_de_publicacao"
+        cursor.execute(pegar_tipos)
+        tipos = cursor.fetchall()
+        print(cursos)
+        dados_usuario_logado = carregarInfoLogin()
+        return render_template("relatorios.html", cursos=cursos, users=users, tipos=tipos, dados_usuario_logado=dados_usuario_logado) 
+    except mariadb.Error as e:
+        print(f"Error connecting to MariaDB Platform: {e}")
+        return render_template('home.html')   
+    
 # rota para renderização da pagina de repositórios "repositorios.html"
-    return render_template ("relatorios.html", dados_usuario_logado=dados_usuario_logado)
+
 
 @app.route("/cadInterno", methods=['GET', 'POST'])
 def cadInterno():
@@ -492,6 +513,73 @@ def alterarfuncaoaluno():
         # Renderiza a página 'cadcurso.html' em caso de erro no cadastro.
         return render_template('cadcurso.html')
 
+
+    
+@app.route('/filtrar', methods=['POST'])
+def filtrar():
+    print("entrou")
+    filtros = request.json  # Recebe os filtros como JSON
+    curso = filtros.get('curso')
+    autor = filtros.get('autor')
+    tipo = filtros.get('tipo')
+    data_inicial = filtros.get('data_inicial')
+    data_final = filtros.get('data_final')
+    print(curso,autor,tipo,data_inicial,data_final)
+    
+    
+    query = """
+    SELECT 
+        p.id_publicacao,
+        p.nome_arquivo,
+        a.nome AS nome_autor,
+        p.tipo AS nome_tipo,
+        c.nome_curso AS nome_curso,
+        p.data_publicacao
+    FROM 
+        publicacao p
+    LEFT JOIN usuario a ON p.id_autor = a.id_usuario
+    LEFT JOIN tipos_de_publicacao t ON p.tipo = t.id
+    LEFT JOIN curso c ON p.id_curso = c.id_curso
+    WHERE 1=1
+
+    """
+    params = []
+
+    if curso:
+        query += " AND p.id_curso = %s"
+        params.append(curso)
+
+    if autor:
+        query += " AND p.id_autor = %s"
+        params.append(autor)
+
+    if tipo:
+        query += " AND p.tipo = %s"
+        params.append(tipo)
+
+    if data_inicial:
+        query += " AND p.data_publicacao >= %s"
+        params.append(data_inicial)
+
+    if data_final:
+        query += " AND p.data_publicacao <= %s"
+        params.append(data_final)
+
+
+    print(query)
+    print(params)
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute(query, params)
+        resultados = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        
+        print(resultados)
+        return jsonify(resultados)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 

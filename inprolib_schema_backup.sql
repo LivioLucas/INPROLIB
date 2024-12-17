@@ -26,9 +26,9 @@ CREATE TABLE IF NOT EXISTS `audit_login` (
   `imagem_usuario` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `ultimo_login` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_audit`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 
--- Copiando dados para a tabela inprolib_schema.audit_login: ~28 rows (aproximadamente)
+-- Copiando dados para a tabela inprolib_schema.audit_login: ~29 rows (aproximadamente)
 INSERT INTO `audit_login` (`id_audit`, `nome_usuario`, `imagem_usuario`, `ultimo_login`) VALUES
 	(2, 'Lívio Lucas', '..\\static\\img\\fotoLivio.png', '2024-12-04 16:33:18'),
 	(3, 'Leonardo Santos Henrique Melo', 'C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\fotoperfil\\Screenshot_1.png', '2024-12-04 16:34:26'),
@@ -57,7 +57,12 @@ INSERT INTO `audit_login` (`id_audit`, `nome_usuario`, `imagem_usuario`, `ultimo
 	(26, 'Lívio Lucas', '..\\static\\img\\fotoLivio.png', '2024-12-17 00:37:01'),
 	(27, 'Lívio Lucas', '..\\static\\img\\fotoLivio.png', '2024-12-17 00:54:12'),
 	(28, 'Lívio Lucas', '..\\static\\img\\fotoLivio.png', '2024-12-17 00:56:11'),
-	(29, 'Gustavo Henrique Suriane', '..\\static\\img\\wppLIVIO.jpg', '2024-12-17 01:00:01');
+	(29, 'Gustavo Henrique Suriane', '..\\static\\img\\wppLIVIO.jpg', '2024-12-17 01:00:01'),
+	(30, 'Lívio Lucas', '..\\static\\img\\fotoLivio.png', '2024-12-17 01:07:53'),
+	(31, 'Lívio Lucas', '..\\static\\img\\fotoLivio.png', '2024-12-17 16:01:50'),
+	(32, 'Lívio Lucas', '..\\static\\img\\fotoLivio.png', '2024-12-17 16:18:14'),
+	(33, 'Lívio Lucas', '..\\static\\img\\fotoLivio.png', '2024-12-17 16:51:00'),
+	(34, 'Lucas Rodrigues Vargas', '..\\static\\img\\wppLIVIO.jpg', '2024-12-17 16:52:09');
 
 -- Copiando estrutura para tabela inprolib_schema.curso
 CREATE TABLE IF NOT EXISTS `curso` (
@@ -70,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `curso` (
   PRIMARY KEY (`id_curso`),
   KEY `id_coordenador` (`id_coordenador`),
   CONSTRAINT `curso_ibfk_1` FOREIGN KEY (`id_coordenador`) REFERENCES `usuario` (`id_usuario`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela inprolib_schema.curso: ~5 rows (aproximadamente)
 INSERT INTO `curso` (`id_curso`, `nome_curso`, `id_coordenador`, `descricao_curso`, `codigo_curso`, `autorizacao`) VALUES
@@ -78,7 +83,8 @@ INSERT INTO `curso` (`id_curso`, `nome_curso`, `id_coordenador`, `descricao_curs
 	(5, 'Administração', 13, 'Curso de Administração', 'ADM 2024.2', 'teste do livio'),
 	(6, 'Enfermagem', 15, 'Curso de Enfermagem 2024.2', 'ENF 2024.2', 'TESTE TCHERERE'),
 	(7, 'teste', 13, 'teste', 'teste', 'TESTE TCHERERE'),
-	(8, 'Curso de Acupuntura', 13, 'Pós Graduação em Acupuntura', 'ACUP2024.2', '1095');
+	(8, 'Curso de Acupuntura', 13, 'Pós Graduação em Acupuntura', 'ACUP2024.2', '1095'),
+	(9, 'Curso de Logística', 11, 'Graduação em Logistica', 'LOG.2024-2', '6474/24');
 
 -- Copiando estrutura para tabela inprolib_schema.esqueci_senha
 CREATE TABLE IF NOT EXISTS `esqueci_senha` (
@@ -132,12 +138,13 @@ CREATE TABLE IF NOT EXISTS `publicacao` (
   KEY `id_curso` (`id_curso`),
   CONSTRAINT `publicacao_ibfk_1` FOREIGN KEY (`id_autor`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE,
   CONSTRAINT `publicacao_ibfk_2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela inprolib_schema.publicacao: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela inprolib_schema.publicacao: ~3 rows (aproximadamente)
 INSERT INTO `publicacao` (`id_publicacao`, `titulo`, `data_publicacao`, `id_autor`, `id_curso`, `tipo`, `status`, `arquivo`, `nome_arquivo`, `assuntos_relacionados`, `data_autoria`) VALUES
-	(14, '1732719355852.pdf', '2024-11-27 17:28:36', 15, 5, 'Teses', 'Publicado', 'C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\arquivos\\upload\\1732719355852.pdf', 'Testando commit', 'teste', '2024-11-12'),
-	(15, '1734379903304.pdf', '2024-12-17 00:58:17', 11, 8, 'Dissertação', 'Publicado', 'C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\arquivos\\upload\\1734379903304.pdf', 'Acupuntura e os benefícios da Saúde ', 'Saúde', '2024-12-16');
+	(14, '1732719355852.pdf', '2024-11-27 17:28:36', 15, 5, 'Tese', 'Publicado', 'C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\arquivos\\upload\\1732719355852.pdf', 'Testando commit', 'teste', '2024-11-12'),
+	(15, '1734379903304.pdf', '2024-12-17 00:58:17', 11, 8, 'Dissertações', 'Publicado', 'C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\arquivos\\upload\\1734379903304.pdf', 'Acupuntura e os benefícios da Saúde ', 'Saúde', '2024-12-16'),
+	(16, '24100757.58_-_José_Guilherme_Paciléo_Zanardo_-_17122024112354208.pdf', '2024-12-17 16:54:00', 17, 9, 'Monografia', 'Publicado', 'C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\arquivos\\upload\\24100757.58_-_José_Guilherme_Paciléo_Zanardo_-_17122024112354208.pdf', 'Cargas Orgânicas ', 'Logistica', '2024-12-17');
 
 -- Copiando estrutura para tabela inprolib_schema.relatorio
 CREATE TABLE IF NOT EXISTS `relatorio` (
@@ -148,6 +155,20 @@ CREATE TABLE IF NOT EXISTS `relatorio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela inprolib_schema.relatorio: ~0 rows (aproximadamente)
+
+-- Copiando estrutura para tabela inprolib_schema.tipos_de_publicacao
+CREATE TABLE IF NOT EXISTS `tipos_de_publicacao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_tipo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+
+-- Copiando dados para a tabela inprolib_schema.tipos_de_publicacao: ~4 rows (aproximadamente)
+INSERT INTO `tipos_de_publicacao` (`id`, `nome_tipo`) VALUES
+	(1, 'TCC'),
+	(2, 'Dissertação'),
+	(3, 'Monografia'),
+	(4, 'Tese');
 
 -- Copiando estrutura para tabela inprolib_schema.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -160,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `foto_perfil` varchar(255) DEFAULT NULL,
   `curso_usuario` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela inprolib_schema.usuario: ~5 rows (aproximadamente)
 INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `cpf`, `senha`, `tipo`, `foto_perfil`, `curso_usuario`) VALUES
@@ -168,7 +189,8 @@ INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `cpf`, `senha`, `tipo`, `f
 	(13, 'Leonardo Santos Henrique Melo', 'leoshmello@gmail.com', '810.301.940-25', '794613', 'Professor', 'C:\\Users\\livio\\Documents\\GitHub\\INPROLIB\\fotoperfil\\Screenshot_1.png', 'Psicologia'),
 	(14, 'teste', 'teste@gmail.com', '686.013.600-68', '123', 'Aluno', '..\\static\\img\\pentagono.png', 'Administração'),
 	(15, 'TCHÊRERE', 'gustavoteste@gmail.com', '113.233.720-83', '123123', 'Professor', '..\\static\\img\\tcherere.png', 'Administração'),
-	(16, 'Gustavo Henrique Suriane', 'gusSuriane@gmail.com', '984.864.811-21', '159159', 'Funcionário', '..\\static\\img\\wppLIVIO.jpg', NULL);
+	(16, 'Gustavo Henrique Suriane', 'gusSuriane@gmail.com', '984.864.811-21', '159159', 'Funcionário', '..\\static\\img\\wppLIVIO.jpg', NULL),
+	(17, 'Lucas Rodrigues Vargas', 'Lucas@gmail.com', '662.181.111-23', '321321', 'Aluno', '..\\static\\img\\wppLIVIO.jpg', 'Curso de Logística');
 
 -- Copiando estrutura para tabela inprolib_schema.usuario_curso
 CREATE TABLE IF NOT EXISTS `usuario_curso` (

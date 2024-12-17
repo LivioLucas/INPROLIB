@@ -52,32 +52,44 @@
     <p></p>
     <table class="campos">
           <tr>
-            <td><label for="">Curso</label></td>
-            <td><label for="">Autor</label></td>
+            <td><label for="curso">Curso</label></td>
+            <td><label for="autor">Autor</label></td>
           </tr>
           <tr>
-            <td><select name="" id=""></select></td>
-            <td><select name="" id=""></select></td>
+            <td><select name="curso" id="curso">
+                {% for curso in cursos %}
+                    <option value="{{ curso[1] }}" selected>{{ curso[0] }}</option>                                
+                {% endfor %}
+            </select></td>
+            <td><select name="autor" id="autor">
+                {% for user in users %}
+                    <option value="{{ user[1] }}" selected>{{ user[0] }}</option>                                
+                {% endfor %}
+            </select></td>
           </tr>
           <tr>
-            <td><label for="">Tipo de documento</label></td>
-            <td><label for="">Data Inicial</label></td>
+            <td><label for="tipo">Tipo de documento</label> </td>
+            <td><label for="data_inicial">Data Inicial</label></td>
           </tr>
           <tr>
-            <td><select name="" id=""></select></td>
-            <td><input type="date" name="" id=""></td>
+            <td><select name="tipo" id="tipo">{% for tipo in tipos %}
+                <option value="{{ tipo[0] }}" selected>{{ tipo[0] }}</option>                                
+                {% endfor %}</select>
+            </td>
+            <td><input type="date" name="data_inicial" id="data_inicial"></td>
           </tr>
           <tr>
-            <td><label for="">Data Final</label></td>
+            <td><label for="data_final">Data Final</label></td>
           </tr>
           <tr>
-            <td><input type="date" name="" id=""></td>
+            <td><input type="date" name="data_final" id="data_final"></td>
           </tr>
     </table>
+    <button id="aplica_filtro">Aplicar Filtros</button>
     <table class="tabela-trabalhos">
         <thead>
             <tr>
-                <th>Assunto</th>
+                <th>Titulo</th>
                 <th>Autor</th>
                 <th>Tipo</th>
                 <th>Data</th>
@@ -116,10 +128,8 @@
             </tr>
         </tbody>
     </table>
-    <div class="but">
-        <button type="submit">GERAR RELATÓRIO</button>
-    </div>
+
 </div>
-<script src="../static/js/menu.js"></script>
+<script src="../static/js/relatorios.js"></script>
 </body>
 </html>
