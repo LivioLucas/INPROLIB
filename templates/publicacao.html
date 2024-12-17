@@ -21,13 +21,13 @@
         <a href="/cadcurso"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
             post_add
             </span>Cadastro de Cursos</button></a>
-        <a href="/cadInterno"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+        <a href="cadInterno"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
             how_to_reg
             </span>Vinculação de Funções</button></a>
         <a href="/publicacao_conteudo"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
             upload
             </span>Publicação de Conteúdos</button></a>
-        <a href="/h"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+        <a href="/relatorio"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
             feedback
             </span>Relatórios</button></a>
         <button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
@@ -84,7 +84,10 @@
                 </datalist>
             </div>
         </div>
-        
+        <label for="termos" class="termos">
+            <input type="checkbox" id="termos">
+            Eu concordo com os <a href="../termo.pdf" target="_blank">termos de arquivamento e exposição do(s) arquivo(s).</a>.
+        </label>
         <div class="alinha">
             <div class="file-upload">
                 <span class="material-symbols-outlined icon">upload</span>
@@ -93,8 +96,7 @@
                 <img id="file-preview" style="display: none; width: 100px; height: auto; margin-top: 10px;">
             </div>
         </div>
-        
-        <button type="submit" class="publicar-btn">Publicar</button>
+        <button type="submit" class="publicar-btn" id="submitBtn" disabled>Publicar</button>
     </form>
     <div id="notification" style="display: none; padding: 10px; margin-top: 15px;"></div>
 </div>
@@ -177,5 +179,6 @@
     
 </script>
 <script src="../static/js/menu.js"></script>
+<script src="../static/js/publicacao.js"></script>
 </body>
 </html>

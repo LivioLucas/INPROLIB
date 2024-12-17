@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INPROLIB REPOSITORIO</title>
+    <link rel="stylesheet" href="../static/css/opcoes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="menu">
+        <i class="fa-solid fa-bell" id="sino"></i>
+            <div class="photo-placeholder"></div>
+        <h3>User</h3>
+        <a href="/repositorios"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+            inventory_2
+            </span>Repositórios</button></a>
+        <a href="/"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+            post_add
+            </span>Cadastro de Cursos</button></a>
+        <a href=""><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+            how_to_reg
+            </span>Cadastro de Usuários</button></a>
+        <a href=""><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+            upload
+            </span>Publicação de Conteúdos</button></a>
+        <a href="/h"><button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+            feedback
+            </span>Relatórios</button></a>
+        <button class="dropdown-btn bot2" style="font-size: 16px;"><span class="material-symbols-outlined" id="simb">
+            settings</span>Opções</a></button>
+        <div class="dropdown-container">
+            <a class="cascata" href="/"><span class="material-symbols-outlined" id="simb">
+                logout</span>Sair</a>
+            <a class="cascata" href="/"><span class="material-symbols-outlined" id="simb">
+                unfold_more</span>Trocar função</a>
+            <a class="cascata" id="toggleMode"><span class="material-symbols-outlined" id="simb">
+                routine</span>Modo Noturno</a>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Opções</h1>
+        <input type="text" value="Alterar Senha" class="disabled-input" disabled>
+        
+        <!-- Campos de senha com rótulos -->
+        <div class="password-container">
+            <div class="input-group">
+                <label for="current-password">Senha atual:</label>
+                <input type="password" id="current-password" class="password-input" placeholder="Insira sua senha">
+            </div>
+            <div class="input-group">
+                <label for="new-password">Nova senha:</label>
+                <input type="password" id="new-password" class="password-input" placeholder="Insira sua senha">
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirmar nova senha:</label>
+                <input type="password" id="confirm-password" class="password-input" placeholder="Insira sua senha">
+            </div>
+        </div>
+        <!-- Botão de confirmação -->
+        <button class="confirm-button">Confirmar</button>
+
+        <!-- Novo input para alterar dados pessoais -->
+        <input type="text" value="Perfil Do Usuário" class="disabled-input" disabled>
+
+        <!-- Colunas de inputs -->
+        <div class="input-columns">
+            <div class="column">
+                <div class="input-group">
+                    <label for="student-name">Nome aluno:</label>
+                    <input type="text" id="student-name" placeholder="Insira o nome do aluno">
+                </div>
+                <div class="input-group">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" placeholder="Insira o CPF:" maxlength="14" oninput="mascaraCPF(this)">
+                </div>
+            </div>
+            <div class="column">
+                <div class="input-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" id="telefone" placeholder="Insira o telefone:" maxlength="15" oninput="mascaraTelefone(this)">
+                </div>
+                <div class="input-group">
+                    <div class="input-group">
+                        <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Insira o email:">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="input-group">
+        <button class="save-button">Salvar</button>
+    </div>
+    <script>
+        function mascaraCPF(cpf) {
+            cpf.value = cpf.value
+                .replace(/\D/g, '') // Remove caracteres não numéricos
+                .replace(/(\d{3})(\d)/, '$1.$2') // Adiciona ponto após os primeiros 3 dígitos
+                .replace(/(\d{3})(\d)/, '$1.$2') // Adiciona ponto após os próximos 3 dígitos
+                .replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Adiciona traço antes dos últimos 2 dígitos
+        }
+
+        function mascaraTelefone(telefone) {
+        telefone.value = telefone.value
+            .replace(/\D/g, '') // Remove caracteres não numéricos
+            .replace(/(\d{2})(\d)/, '($1) $2') // Adiciona parênteses ao DDD
+            .replace(/(\d{5})(\d{1,4})/, '$1-$2') // Adiciona traço entre o quinto e sexto dígito
+            .replace(/(-\d{4})\d+?$/, '$1'); // Limita o número de dígitos ao padrão de telefone (8 ou 9 dígitos)
+    }
+    </script>
+    <script src="/static/js/menu.js"></script>
+</body>
+</html>

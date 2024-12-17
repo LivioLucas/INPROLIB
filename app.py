@@ -61,6 +61,12 @@ def repositorios():
 # rota para renderização da pagina de repositórios "repositorios.html"
     return render_template ("repositorios.html", dados_usuario_logado=dados_usuario_logado)
 
+@app.route("/relatorio", methods=['GET', 'POST'])
+def relatorios():
+    dados_usuario_logado = carregarInfoLogin()
+# rota para renderização da pagina de repositórios "repositorios.html"
+    return render_template ("relatorios.html", dados_usuario_logado=dados_usuario_logado)
+
 @app.route("/cadInterno", methods=['GET', 'POST'])
 def cadInterno():
     dados_usuario_logado = carregarInfoLogin()
